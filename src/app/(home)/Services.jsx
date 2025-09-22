@@ -43,14 +43,18 @@ export default function Services() {
 
   return (
    
-     <section className="relative w-full py-16 text-white overflow-hidden noise-bg ">
+    //  <section className="relative w-full py-16 text-white overflow-hidden noise-bg ">
+    <section
+  className="relative w-full py-16 text-white overflow-hidden bg-cover bg-center"
+  style={{ backgroundImage: "url('/images/services/Rectangle 474.svg')" }}
+>
       
       {/* Background image (AUREX + lines) */}
       <Image
         src={aurex} // replace with your background image
         alt="Background"
         fill
-        className="absolute inset-0 w-10 h-60 object-contain opacity-16 bg-white"
+        className="absolute inset-0 w-10 h-60 object-contain opacity-[130%]"
       />
 
       <div className="relative z-20  mx-auto px-6 text-center">
@@ -61,34 +65,7 @@ export default function Services() {
         </p>
 
         {/* Service Cards */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {services.map((service) => (
-            <div key={service.id} className="flex flex-col items-center font-[inter] text-center">
-             
-              <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg">
-  <Image
-    src={service.image}
-    alt={service.title}
-    fill
-    className="object-cover rounded-full"
-    sizes="240px"
-  />
-</div>
-             
-              <h3 className="mt-6 text-lg font-[inter] font-semibold">{service.title}</h3>
-              <p className="text-sm text-gray-300 font-[inter]">{service.description}</p>
-
-             
-              <a
-                href={service.link}
-                className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300"
-              >
-                ENQUIRE NOW 
-                <ArrowUpRight className="ml-1 w-4 h-4" />
-              </a>
-            </div>
-          ))}
-        </div> */}
+       
 
          {/* Mobile: Swiper | Desktop: Grid */}
         <div className="block md:hidden">
@@ -97,7 +74,7 @@ export default function Services() {
             slidesPerView={1}
             pagination={{ clickable: true }}
             modules={[Pagination]}
-            className="pb-28" // adds space for the dots
+            className="pb-28 mt-2" // adds space for the dots
           >
             {services.map((service) => (
               <SwiperSlide key={service.id}>
