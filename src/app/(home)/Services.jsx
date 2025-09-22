@@ -1,9 +1,89 @@
-import React from 'react'
+"use client";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import aurex from "../../../public/images/services/AUREX.svg";
+import bg from "../../../public/images/services/Rectangle 474.svg";
+// import lines from "../../../public/images/services/Line.svg";
+import c1 from "../../../public/images/services/Ellipse 8.svg";
+import c2 from "../../../public/images/services/Ellipse 8.svg";
+import s1 from "../../../public/images/services/sr1.jpg";
+import s2 from "../../../public/images/services/sr2.jpg";
+import s3 from "../../../public/images/services/sr3.jpg";
 
-const Services = () => {
+export default function Services() {
+  const services = [
+    {
+      id: 1,
+      title: "Rental and Resale Assistance",
+      description: "we specialize in Rental and Resales",
+      image: s1, // replace with your image
+      link: "#",
+    },
+    {
+      id: 2,
+      title: "Interior Designing",
+      description: "transforms your house into a home",
+      image: s2, // replace with your image
+      link: "#",
+    },
+    {
+      id: 3,
+      title: "Maintenance Assistance",
+      description: "comprehensive Property Sketching services",
+      image: s3, // replace with your image
+      link: "#",
+    },
+  ];
+
   return (
-    <div>Services</div>
-  )
-}
+   
+     <section className="relative w-full py-16 text-white overflow-hidden noise-bg ">
+      
+      {/* Background image (AUREX + lines) */}
+      <Image
+        src={aurex} // replace with your background image
+        alt="Background"
+        fill
+        className="absolute inset-0 w-10 h-60 object-contain opacity-16 bg-white"
+      />
 
-export default Services
+      <div className="relative z-20  mx-auto px-6 text-center">
+        {/* Heading */}
+        <h2 className="text-2xl md:text-3xl font-medium font-[urbanist] mb-4">OUR SERVICES</h2>
+        <p className="mb-12 text-gray-200 font-[inter]">
+          We provide end-to-end real estate solutions designed to make your journey seamless
+        </p>
+
+        {/* Service Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {services.map((service) => (
+            <div key={service.id} className="flex flex-col items-center font-[inter] text-center">
+              {/* Circular Image */}
+              <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg">
+  <Image
+    src={service.image}
+    alt={service.title}
+    fill
+    className="object-cover rounded-full"
+    sizes="240px"
+  />
+</div>
+              {/* Title + Description */}
+              <h3 className="mt-6 text-lg font-[inter] font-semibold">{service.title}</h3>
+              <p className="text-sm text-gray-300 font-[inter]">{service.description}</p>
+
+              {/* Enquire Now Button */}
+              <a
+                href={service.link}
+                className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300"
+              >
+                ENQUIRE NOW 
+                <ArrowUpRight className="ml-1 w-4 h-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

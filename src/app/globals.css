@@ -5,6 +5,9 @@
   font-family: var(--font-inter), sans-serif;
   --color-primary: #006A54; 
   --color-secondary: #C19A5D; 
+
+   /* --color-primary: rgba(0, 106, 84, 1); */
+  --noise-color: rgba(0, 0, 0, 0.25);
 }
 
 .containers {
@@ -17,3 +20,41 @@
     width: 90%;
   }
 }
+
+
+.noise-bg {
+  background-color: var(--color-primary);
+  background-image: repeating-radial-gradient(
+    var(--noise-color) 0,
+    var(--noise-color) 1px,
+    transparent 1px,
+    transparent 100%
+  );
+  background-size: 0.2rem 0.2rem; 
+}
+
+/* .noise-bg {
+  background-color: var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.noise-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(0,0,0,0.25) 0%,
+    transparent 5%,
+    transparent 10%
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  animation: noise 1s steps(8) infinite;
+}
+
+@keyframes noise {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(5%,5%); }
+} */
