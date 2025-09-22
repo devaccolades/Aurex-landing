@@ -67,7 +67,7 @@ const HeroSection = () => {
               </div>
 
               {/* Vector BG */}
-              <div className="mb-4">
+              <div className="mb-4 flex justify-center items-center">
                 <Image
                   src={project.vector_image}
                   alt="Vector Background"
