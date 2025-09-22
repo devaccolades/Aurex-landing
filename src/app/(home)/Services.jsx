@@ -1,6 +1,12 @@
 "use client";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
 import aurex from "../../../public/images/services/AUREX.svg";
 import bg from "../../../public/images/services/Rectangle 474.svg";
 // import lines from "../../../public/images/services/Line.svg";
@@ -55,10 +61,10 @@ export default function Services() {
         </p>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {services.map((service) => (
             <div key={service.id} className="flex flex-col items-center font-[inter] text-center">
-              {/* Circular Image */}
+             
               <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg">
   <Image
     src={service.image}
@@ -68,11 +74,11 @@ export default function Services() {
     sizes="240px"
   />
 </div>
-              {/* Title + Description */}
+             
               <h3 className="mt-6 text-lg font-[inter] font-semibold">{service.title}</h3>
               <p className="text-sm text-gray-300 font-[inter]">{service.description}</p>
 
-              {/* Enquire Now Button */}
+             
               <a
                 href={service.link}
                 className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300"
@@ -82,8 +88,88 @@ export default function Services() {
               </a>
             </div>
           ))}
+        </div> */}
+
+         {/* Mobile: Swiper | Desktop: Grid */}
+        <div className="block md:hidden">
+         <Swiper
+            spaceBetween={20}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            modules={[Pagination]}
+            className="pb-28" // adds space for the dots
+          >
+            {services.map((service) => (
+              <SwiperSlide key={service.id}>
+                <div className="flex flex-col items-center font-[inter] text-center">
+                  {/* Circular Image */}
+                  <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg mx-auto">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover rounded-full"
+                      sizes="240px"
+                    />
+                  </div>
+                  {/* Title + Description */}
+                  <h3 className="mt-6 text-lg font-[inter] font-semibold">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-gray-300 font-[inter]">
+                    {service.description}
+                  </p>
+                  {/* Button */}
+                  <a
+                    href={service.link}
+                    className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300"
+                  >
+                    ENQUIRE NOW
+                    <ArrowUpRight className="ml-1 w-4 h-4" />
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-3 gap-10">
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className="flex flex-col items-center font-[inter] text-center"
+            >
+              {/* Circular Image */}
+              <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover rounded-full"
+                  sizes="240px"
+                />
+              </div>
+              {/* Title + Description */}
+              <h3 className="mt-6 text-lg font-[inter] font-semibold">
+                {service.title}
+              </h3>
+              <p className="text-sm text-gray-300 font-[inter]">
+                {service.description}
+              </p>
+              {/* Button */}
+              <a
+                href={service.link}
+                className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300"
+              >
+                ENQUIRE NOW
+                <ArrowUpRight className="ml-1 w-4 h-4" />
+              </a>
+            </div>
+          ))}
         </div>
       </div>
+    
     </section>
   );
 }
