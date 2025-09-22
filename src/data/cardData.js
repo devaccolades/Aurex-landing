@@ -68,8 +68,8 @@ export const servicesData = [
 export const projectsData = [
   {
     status: "Ongoing",
-    project_logo: "/images/herosection/cascade.svg",
-    qr_code: "/images/herosection/qr1.svg",
+    project_logo: "/images/herosection/cascade-city.png",
+    qr_code: "/images/herosection/qr-cascade.png",
     rera_no: "K-RERA/PRJ/TSR/263/2024",
     vector_image: "/images/herosection/vector1.svg",
     distance: "900 mtr From Swaraj Round",
@@ -80,12 +80,12 @@ export const projectsData = [
     brochure: true,
     enquire_now: true,
     main_image: "/images/herosection/flat1.svg",
-    map_icon: "/images/icons/map.png"
+    map_icon: "/images/icons/map.png",
   },
   {
     status: "Ongoing",
-    project_logo: "/images/herosection/liard.svg",
-    qr_code: "/images/herosection/qr2.svg",
+    project_logo: "/images/herosection/cascade-city.png",
+    qr_code: "/images/herosection/qr-cascade.png",
     rera_no: "K-RERA/PRJ/TSR/263/2024",
     vector_image: "/images/herosection/vector2.svg",
     distance: "900 mtr From Swaraj Round",
@@ -96,6 +96,6 @@ export const projectsData = [
     brochure: true,
     enquire_now: true,
     main_image: "/images/herosection/flat2.svg",
-    map_icon: "/images/icons/map.png"
-  }
+    map_icon: "/images/icons/map.png",
+  },
 ];
