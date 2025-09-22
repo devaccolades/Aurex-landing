@@ -7,13 +7,14 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {servicesData} from "../../data/cardData";
+import { servicesData } from "../../data/cardData";
 
 import aurex from "../../../public/images/services/AUREX.svg";
 import bg from "../../../public/images/services/Rectangle 474.svg";
-// import lines from "../../../public/images/services/Line.svg";
+import lines from "../../../public/images/services/Line 15.svg";
 import c1 from "../../../public/images/services/Ellipse 8.svg";
 import c2 from "../../../public/images/services/Ellipse 8.svg";
+import cl from "../../../public/images/services/Group.svg";
 import s1 from "../../../public/images/services/sr1.jpg";
 import s2 from "../../../public/images/services/sr2.jpg";
 import s3 from "../../../public/images/services/sr3.jpg";
@@ -44,13 +45,18 @@ export default function Services() {
   ];
 
   return (
-   
+
     //  <section className="relative w-full py-16 text-white overflow-hidden noise-bg ">
     <section
-  className="relative w-full py-16 text-white overflow-hidden bg-cover bg-center"
-  style={{ backgroundImage: "url('/images/services/Rectangle 474.svg')" }}
->
-      
+      className="relative w-full py-16 text-white overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/services/Rectangle 474.svg')" }}
+    >
+     
+      <div className="absolute h-full xl:h-full  flex items-center -mt-16 xl:-mt-16 ">
+        
+        <Image alt="bg" src={cl}  height={100} className="h-full w-auto object-cover" />
+      </div>
+
       {/* Background image (AUREX + lines) */}
       <Image
         src={aurex} // replace with your background image
@@ -67,11 +73,11 @@ export default function Services() {
         </p>
 
         {/* Service Cards */}
-       
 
-         {/* Mobile: Swiper | Desktop: Grid */}
+
+        {/* Mobile: Swiper | Desktop: Grid */}
         <div className="block md:hidden">
-         <Swiper
+          <Swiper
             spaceBetween={20}
             slidesPerView={1}
             pagination={{ clickable: true }}
@@ -92,20 +98,19 @@ export default function Services() {
                     />
                   </div>
                   {/* Title + Description */}
-                  <h3 className="mt-6 text-lg font-[inter] font-semibold">
+                  <h3 className="mt-6 text-lg font-[inter] items-start font-semibold">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-gray-300 font-[inter]">
+                  <p className="text-sm text-gray-300 items-start  font-[inter]">
                     {service.description}
                   </p>
                   {/* Button */}
-                  <a
-                    href={service.link}
+                  <button
                     className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300"
                   >
                     ENQUIRE NOW
                     <ArrowUpRight className="ml-1 w-4 h-4" />
-                  </a>
+                  </button>
                 </div>
               </SwiperSlide>
             ))}
@@ -129,26 +134,29 @@ export default function Services() {
                   sizes="240px"
                 />
               </div>
+              <div className="items-start text-left">
               {/* Title + Description */}
-              <h3 className="mt-6 text-lg font-[inter] font-semibold">
+              <h3 className="mt-6 text-lg font-[inter] items-start font-semibold">
                 {service.title}
               </h3>
-              <p className="text-sm text-gray-300 font-[inter]">
+              <p className="text-sm text-gray-300 items-start font-[inter]">
                 {service.description}
               </p>
+
               {/* Button */}
-              <a
-                href={service.link}
+              <button
                 className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300"
               >
                 ENQUIRE NOW
                 <ArrowUpRight className="ml-1 w-4 h-4" />
-              </a>
+              </button>
+              </div>
+              
             </div>
           ))}
         </div>
       </div>
-    
+
     </section>
   );
 }
