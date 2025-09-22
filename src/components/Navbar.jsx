@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo1 from '../../public/images/navbar/Logo1.svg';
-import Logo2 from '../../public/images/navbar/Logo2.svg';
+import Logo1 from '../../public/images/navbar/logo1.svg';
+import Logo2 from '../../public/images/navbar/logo2.svg';
 import Phone from '../../public/images/navbar/phone.svg';
 import Mail from '../../public/images/navbar/mail.svg';
 

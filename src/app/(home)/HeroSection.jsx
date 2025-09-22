@@ -23,7 +23,7 @@ const HeroSection = () => {
               />
 
               {/* Status Badge */}
-              <span className="absolute top-4 bg-yellow-600 text-white text-xs px-4 py-1 rounded-r-full">
+              <span className="absolute top-4 bg-[#C19A5B] text-white text-xs px-4 py-1 rounded-r-full font-[urbanist] font-normal text-[14px] leading-[100%] ">
                 {project.status}
               </span>
 
