@@ -12,11 +12,11 @@ export default function Home() {
     <>
       <Navbar />
       <HeroSection />
-      {/* <Ambassador />
+      <Ambassador />
       <Services />
       <WhyChoose />
       <Map />
-      <Footer /> */}
+      <Footer />
     </>
   );
 }
