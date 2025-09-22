@@ -7,6 +7,8 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
+import {servicesData} from "../../data/cardData";
+
 import aurex from "../../../public/images/services/AUREX.svg";
 import bg from "../../../public/images/services/Rectangle 474.svg";
 // import lines from "../../../public/images/services/Line.svg";
@@ -76,7 +78,7 @@ export default function Services() {
             modules={[Pagination]}
             className="pb-28 mt-2" // adds space for the dots
           >
-            {services.map((service) => (
+            {servicesData.map((service) => (
               <SwiperSlide key={service.id}>
                 <div className="flex flex-col items-center font-[inter] text-center">
                   {/* Circular Image */}
@@ -112,7 +114,7 @@ export default function Services() {
 
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-3 gap-10">
-          {services.map((service) => (
+          {servicesData.map((service) => (
             <div
               key={service.id}
               className="flex flex-col items-center font-[inter] text-center"
