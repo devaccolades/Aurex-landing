@@ -9,37 +9,48 @@ const WhyChoose = () => {
   return (
     <main className="bg-[#F5F5F5] py-5">
       <section
-        className="w-full h-[400px] lg:h-[650px] 2xl:h-[750px] md:bg-contain lg:bg-cover bg-center bg-no-repeat"
+        className="w-full h-[500px] xl:h-[650px] 2xl:h-[750px] md:bg-cover xl:bg-cover bg-center "
         style={{
           backgroundImage: "url('/images/whyChoose/Group 1000005882.svg')",
         }}
       >
-        <div className="h-full grid grid-cols-[60%_1fr]">
+        <div className="h-full grid grid-cols-[65%_1fr]">
           <div className="relative">
-            <div className="absolute top-[5%] left-[20%] flex  items-center gap-4 ">
-              <span className="bg-white h-fit rounded-full">
-                <Image src={Quality} alt="icon" className="m-3 h-12 w-12" />
+            {/* First Card */}
+            <div className="absolute top-[10%] left-[13%] flex items-start gap-4">
+              <span className="bg-white rounded-full w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={Quality}
+                  alt="icon"
+                  className="w-9 h-9 xl:w-11 xl:h-11"
+                />
               </span>
-              <div className="flex flex-col w-full xl:w-[40%] gap-y-1 ">
+              <div className="flex flex-col w-full lg:w-[40%] gap-y-1">
                 <span className="font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
                   Unmatched Quality
                 </span>
-                <span className="font-[inter] font-normal  text-[14px] leading-[100%]">
+                <span className="font-[inter] font-normal text-[14px] leading-[100%]">
                   Aurex Builders upholds the highest standards of construction,
                   ensuring every project reflects superior craftsmanship and
                   lasting value.
                 </span>
               </div>
             </div>
-            <div className="absolute top-[50%] left-[10%] flex  items-center gap-4 ">
-              <span className="bg-white h-fit rounded-full">
-                <Image src={Time} alt="icon" className="m-3 h-12 w-12" />
+
+            {/* Second Card */}
+            <div className="absolute top-[50%] left-[10%] flex items-start gap-4">
+              <span className="bg-white rounded-full w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={Time}
+                  alt="icon"
+                  className="w-9 h-9 xl:w-11 xl:h-11"
+                />
               </span>
-              <div className="flex flex-col w-full xl:w-[30%]">
+              <div className="flex flex-col w-full lg:w-[30%] gap-y-1">
                 <span className="font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
                   Timely Delivery
                 </span>
-                <span className="font-[inter] font-normal  text-[14px] leading-[100%]">
+                <span className="font-[inter] font-normal text-[14px] leading-[100%]">
                   We pride ourselves on completing projects on schedule without
                   compromising on quality, so you can move into your dream home
                   without delays.
@@ -47,15 +58,20 @@ const WhyChoose = () => {
               </div>
             </div>
 
-            <div className="absolute top-[25%] left-[60%] flex  items-center gap-4 ">
-              <span className="bg-white h-fit rounded-full">
-                <Image src={user} alt="icon" className="m-3 h-12 w-12" />
+            {/* Third Card */}
+            <div className="absolute top-[30%] left-[55%] flex items-start gap-4">
+              <span className="bg-white rounded-full w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={user}
+                  alt="icon"
+                  className="w-9 h-9 xl:w-11 xl:h-11"
+                />
               </span>
-              <div className="flex flex-col w-full xl:w-[70%] ">
-                <span className=" font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
+              <div className="flex flex-col w-full lg:w-[100%] gap-y-1">
+                <span className="font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
                   Customer-Centric Approach
                 </span>
-                <span className="font-[inter] font-normal  text-[14px] leading-[100%]">
+                <span className="font-[inter] font-normal text-[14px] leading-[100%]">
                   Our clients are at the heart of everything we do. From
                   choosing trusted partners to providing exceptional after-sales
                   support, we prioritize your satisfaction every step of the
@@ -63,15 +79,21 @@ const WhyChoose = () => {
                 </span>
               </div>
             </div>
-            <div className="absolute top-[80%] left-[50%] flex  items-center gap-4 ">
-              <span className="bg-white h-fit rounded-full">
-                <Image src={Modern} alt="icon" className="m-3 h-12 w-12" />
+
+            {/* Fourth Card */}
+            <div className="absolute bottom-[10%] left-[50%] flex items-start gap-4">
+              <span className="bg-white rounded-full w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={Modern}
+                  alt="icon"
+                  className="w-9 h-9 xl:w-11 xl:h-11"
+                />
               </span>
-              <div className="flex flex-col w-[60%]">
+              <div className="flex flex-col w-[60%] gap-y-1">
                 <span className="font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
                   Modern Design & Innovation
                 </span>
-                <span className="font-[inter] font-normal  text-[14px] leading-[100%]">
+                <span className="font-[inter] font-normal text-[14px] leading-[100%]">
                   Every property is designed with meticulous attention to
                   detail, combining modern aesthetics with innovative,
                   sustainable construction methods.
@@ -79,8 +101,9 @@ const WhyChoose = () => {
               </div>
             </div>
           </div>
+
           <div className="relative">
-            <span className="absolute top-[37%] right-[35%] lg:w-40 w-28 h-28 lg:h-40 flex flex-col justify-center items-center text-center p-3 text-white bg-black rounded-full font-[urbanist] font-medium text-[24px] lg:text-[32px] leading-[100%]">
+            <span className="absolute top-[32%] xl:top-[37%] 2xl:top-[40%] 2xl:right-[40%] right-[35%] lg:w-40 w-28 h-28 lg:h-40 flex flex-col justify-center items-center text-center p-3 text-white bg-black rounded-full font-[urbanist] font-medium text-[24px] lg:text-[32px] leading-[100%]">
               <span>WHY</span>
               <span>CHOOSE</span>
               <span>US</span>
