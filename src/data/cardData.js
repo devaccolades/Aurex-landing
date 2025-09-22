@@ -72,7 +72,8 @@ export const projectsData = [
     qr_code: "/images/herosection/qr1.svg",
     rera_no: "K-RERA/PRJ/TSR/263/2024",
     vector_image: "/images/herosection/vector1.svg",
-    distance: "900 mtr From Swaraj Round",
+    distance: "900 mtr",
+    from:"From Swaraj Round",
     apartment_type: "Luxury 1, 2, 3 BHK Apartments",
     total_units: "45 (B+G+9)",
     location: "Chembukkavu, Thrissur",
@@ -80,7 +81,7 @@ export const projectsData = [
     brochure: true,
     enquire_now: true,
     main_image: "/images/herosection/flat1.svg",
-    map_icon: "/images/icons/map.png"
+    map_icon: "/images/herosection/map.svg"
   },
   {
     status: "Ongoing",
@@ -88,7 +89,6 @@ export const projectsData = [
     qr_code: "/images/herosection/qr2.svg",
     rera_no: "K-RERA/PRJ/TSR/263/2024",
     vector_image: "/images/herosection/vector2.svg",
-    distance: "900 mtr From Swaraj Round",
     apartment_type: "Luxury 1, 2, 3 BHK Apartments",
     total_units: "45 (B+G+9)",
     location: "Chembukkavu, Thrissur",
@@ -96,6 +96,6 @@ export const projectsData = [
     brochure: true,
     enquire_now: true,
     main_image: "/images/herosection/flat2.svg",
-    map_icon: "/images/icons/map.png"
+    map_icon: "/images/herosection/map.svg"
   }
 ];
