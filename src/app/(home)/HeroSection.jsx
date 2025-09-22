@@ -1,5 +1,5 @@
 import React from "react";
-import CardData from "../../data/cardData";
+import {projectsData} from "../../data/cardData";
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -7,7 +7,7 @@ const HeroSection = () => {
     <section className="container mx-auto py-10">
       {/* Outer Grid - 2 cards per row */}
       <div className="grid md:grid-cols-2">
-        {CardData.map((project, index) => (
+        {projectsData.map((project, index) => (
           <div
             key={index}
             className="grid grid-cols-1 md:grid-cols-2 bg-white shadow-lg overflow-hidden"
@@ -23,7 +23,7 @@ const HeroSection = () => {
               />
 
               {/* Status Badge */}
-              <span className="absolute top-4 bg-[#C19A5B] text-white text-xs px-4 py-1 rounded-r-full font-[urbanist] font-normal text-[14px] leading-[100%] ">
+              <span className="absolute top-4 bg-[#C19A5B] text-white text-xs px-4 py-2 rounded-r-full font-[urbanist] font-normal text-[14px] leading-[100%] ">
                 {project.status}
               </span>
 
@@ -32,8 +32,8 @@ const HeroSection = () => {
                 <Image
                   src={project.map_icon}
                   alt="Map Location"
-                  width={40}
-                  height={40}
+                  width={44}
+                  height={44}
                   className="cursor-pointer"
                 />
               </div>
@@ -46,19 +46,19 @@ const HeroSection = () => {
                 <Image
                   src={project.project_logo}
                   alt="Project Logo"
-                  width={150}
-                  height={50}
+                  width={100}
+                  height={40}
                   className="object-contain"
                 />
-                <div className="text-right">
+                <div className="text-right flex gap-1">
                   <Image
                     src={project.qr_code}
                     alt="QR Code"
-                    width={60}
-                    height={60}
+                    width={34}
+                    height={34}
                     className="mx-auto mb-1"
                   />
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-500 text-start">
                     RERA REG. NO
                     <br />
                     {project.rera_no}
