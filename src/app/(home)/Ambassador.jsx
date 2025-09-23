@@ -121,38 +121,59 @@ const Ambassador = () => {
       {/* md and above section  */}
 
       <div className="hidden md:relative md:flex md:flex-col">
-        <div className="absolute bottom-0 right-[40%] md:h-[826px] [&@media(min-width:1900px)]:h-[1000px] [&@media(min-width:1900px)]:w-full  w-[436px] overflow-hidden">
+        <div className="absolute bottom-0 right-[40%] md:h-[826px] ambassadorHight w-[436px] overflow-hidden">
           <Image
             src={"/images/ambassador/bhavana.png"}
             height={500}
             width={500}
             alt="ambassador image"
-            className="relative h-full w-full object-cover translate-y-28 z-50"
+            className="relative h-full w-full object-cover translate-y-16 z-50"
           />
         </div>
         <div className="relative flex h-[288px]">
           <div className="absolute top-0 h-full w-full flex">
             <div
-              className="w-[25%]"
+              className="w-[25%] relative"
               style={{
                 borderRight: "0.5px solid rgba(168, 168, 168, 0.3)",
                 borderBottom: "0.5px solid rgba(168, 168, 168, 0.3)",
               }}
-            ></div>
+            >
+              <div className="absolute bottom-0 right-0 ">
+                <div
+                  style={{ background: "rgba(168, 168, 168, 1)" }}
+                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-50 "
+                ></div>
+              </div>
+            </div>
             <div
-              className="w-[25%]"
+              className="w-[25%] relative"
               style={{
                 borderRight: "0.5px solid rgba(168, 168, 168, 0.3)",
                 borderBottom: "0.5px solid rgba(168, 168, 168, 0.3)",
               }}
-            ></div>
+            >
+              <div className="absolute bottom-0 right-0 ">
+                <div
+                  style={{ background: "rgba(168, 168, 168, 1)" }}
+                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-50 "
+                ></div>
+              </div>
+            </div>
             <div
-              className="w-[25%]"
+              className="w-[25%] relative"
               style={{
                 borderRight: "0.5px solid rgba(168, 168, 168, 0.3)",
                 borderBottom: "0.5px solid rgba(168, 168, 168, 0.3)",
               }}
-            ></div>
+            >
+              <div className="absolute bottom-0 right-0 ">
+                <div
+                  style={{ background: "rgba(168, 168, 168, 1)" }}
+                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-50 "
+                ></div>
+              </div>
+            </div>
             <div
               className="w-[25%]"
               style={{
@@ -184,7 +205,7 @@ const Ambassador = () => {
           </div>
         </div>
         {/* second section in tab and above screens */}
-        <div className="relative flex md:h-[260px] xl:h-[329px] [&@media(min-width:1900px)]:h-[520px]">
+        <div className="relative flex md:h-[260px] xl:h-[329px] secondHight">
           <div className="absolute top-0 h-full w-full flex">
             <div
               className="w-[25%]"
@@ -239,14 +260,14 @@ const Ambassador = () => {
 
         {/* 3rd section  */}
 
-        <div className="relative flex md:h-[280px] lg:h-[390px] [&@media(min-width:1900px)]:h-[560px]">
+        <div className="relative flex md:h-[280px] lg:h-[390px] thirdHight">
           <div className="w-[50%] h-full flex items-center justify-center overflow-hidden">
             <div
-              className="h-[1000px] 2xl:h-[1500px] w-[1px] md:rotate-54 lg:rotate-63 [&@media(min-width:1900px)]:rotate-67"
+              className="h-[1000px] 2xl:h-[1500px] w-[1px] md:rotate-54 lg:rotate-63 turnPlus"
               style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
             ></div>
             <div
-              className="h-[1000px] 2xl:h-[1500px] w-[1px] md:-rotate-54 lg:-rotate-63 [&@media(min-width:1900px)]:-rotate-67"
+              className="h-[1000px] 2xl:h-[1500px] w-[1px] md:-rotate-54 lg:-rotate-63 turnMinus"
               style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
             ></div>
           </div>
