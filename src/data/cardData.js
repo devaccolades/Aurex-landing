@@ -35,6 +35,7 @@ export const servicesData = [
 // Projects data
 export const projectsData = [
   {
+    title: "Aurex Cascade City",
     status: "Ongoing",
     project_logo: "/images/herosection/cascade-city.png",
     qr_code: "/images/herosection/qr-cascade.png",
@@ -51,6 +52,7 @@ export const projectsData = [
     map_icon: "/images/icons/map.png",
   },
   {
+    title: "Aurex Liard",
     status: "Ongoing",
     project_logo: "/images/herosection/cascade-city.png",
     qr_code: "/images/herosection/qr-cascade.png",

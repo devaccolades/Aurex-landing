@@ -8,6 +8,32 @@ export default function ContactForm() {
     email: "",
     message: "",
   });
+  const [errors, setErrors] = useState({});
+  const validateForm = () => {
+    let newErrors = {};
+
+    if (!form.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!form.whatsapp.trim()) {
+      newErrors.whatsapp = "WhatsApp number is required";
+    } else if (!/^\d{10,15}$/.test(form.whatsapp)) {
+      newErrors.whatsapp = "Enter a valid number (10-15 digits)";
+    }
+
+    if (!form.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
+      newErrors.email = "Enter a valid email address";
+    }
+
+  
+    setErrors(newErrors);
+
+    // return true if no errors
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,8 +41,12 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
-    // Add your API call or form handling here
+    if (validateForm()) {
+      console.log("Form submitted:", form);
+      // API call here
+    } else {
+      console.log("Validation failed");
+    }
   };
 
   return (
@@ -37,6 +67,7 @@ export default function ContactForm() {
             placeholder="Enter your name"
             className="w-full border border-[#BABABA] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600 font-[urbanist] text-[15px]"
           />
+          {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
         </div>
 
         {/* WhatsApp No */}
@@ -50,6 +81,7 @@ export default function ContactForm() {
             placeholder="Enter WhatsApp Number"
             className="w-full border border-[#BABABA] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600 font-[urbanist] text-[15px]"
           />
+          {errors.whatsapp && <p className="text-red-500 text-xs mt-1">{errors.whatsapp}</p>}
         </div>
 
         {/* Email */}
@@ -63,6 +95,7 @@ export default function ContactForm() {
             placeholder="Enter Email address"
             className="w-full border border-[#BABABA] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600 font-[urbanist] text-[15px]"
           />
+          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
         </div>
 
         {/* Message */}

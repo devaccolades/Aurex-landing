@@ -97,11 +97,12 @@ export default function Services() {
                       sizes="240px"
                     />
                   </div>
+                  <div className="items-start text-left">
                   {/* Title + Description */}
-                  <h3 className="mt-6 text-lg font-[inter] items-start font-semibold">
+                  <h3 className="mt-6 text-md lg:text-lg font-[inter] items-start font-semibold">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-gray-300 items-start  font-[inter]">
+                  <p className="text-[12px] lg:text-sm text-gray-300 items-start  font-[inter]">
                     {service.description}
                   </p>
                   {/* Button */}
@@ -111,6 +112,7 @@ export default function Services() {
                     ENQUIRE NOW
                     <ArrowUpRight className="ml-1 w-4 h-4" />
                   </button>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
@@ -136,10 +138,10 @@ export default function Services() {
               </div>
               <div className="items-start text-left">
               {/* Title + Description */}
-              <h3 className="mt-6 text-lg font-[inter] items-start font-semibold">
+              <h3 className="mt-6 text-md  lg:text-lg font-[inter] items-start font-semibold">
                 {service.title}
               </h3>
-              <p className="text-sm text-gray-300 items-start font-[inter]">
+              <p className="text-[12px] lg:text-sm text-gray-300 items-start font-[inter]">
                 {service.description}
               </p>
 
