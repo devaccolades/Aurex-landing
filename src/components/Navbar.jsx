@@ -29,26 +29,26 @@ const Navbar = () => {
         {/* Center - Navigation Items (Hidden on mobile) */}
         <div className="hidden lg:flex items-center space-x-8 text-black font-[inter] font-normal text-[16px]">
           <Link 
-            href="/projects" 
-            className="hover:text-gray-700 transition-colors"
+            href="#Projects" 
+            className=""
           >
             Projects
           </Link>
           <Link 
-            href="/services" 
-            className="hover:text-gray-700 transition-colors"
+            href="#services" 
+            className=""
           >
             Services
           </Link>
           <Link 
-            href="/about" 
-            className="hover:text-gray-700 transition-colors"
+            href="" 
+            className=""
           >
             About Us
           </Link>
           <Link 
-            href="/contact" 
-            className="hover:text-gray-700 transition-colors"
+            href="#contact-us" 
+            className=""
           >
             Contact Us
           </Link>
