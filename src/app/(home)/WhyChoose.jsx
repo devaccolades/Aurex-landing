@@ -15,6 +15,9 @@ import Modern from "../../../public/images/whyChoose/2419679_apartment_building_
 import Button from "@/components/Button";
 
 const SvgBackground = () => {
+  const totalDuration = 4; // total time to draw all paths
+  const vanishDuration = 0.5; // time to vanish
+
   const paths = [
     "M1446 371.673C1396.57 357.651 1343.13 338.164 1199.82 333.173C1170.02 333.173 1096.95 330.685 1011.1 344.58C962.151 352.504 909.651 364.543 835.868 390.923C794.113 405.851 764.213 419.442 708.875 451.525C678.605 467.923 614.375 504.712 591.105 517.83C535.058 547.062 505.319 562.034 469.788 574.154C392.458 600.534 344.215 615.506 236.377 612.654C160.465 607.664 66.6754 593.832 -2 547.062",
     "M1445 240.603C1395.57 254.525 1342.13 273.873 1198.82 278.828C1169.02 278.828 1095.95 281.299 1010.1 267.502C961.151 259.635 908.651 247.682 834.868 221.491C793.113 206.669 763.213 193.176 707.875 161.322C677.605 145.041 613.375 108.515 590.105 95.4898C534.058 66.4671 504.319 51.6019 468.788 39.5681C391.458 13.3769 343.215 -1.48837 235.377 1.34311C159.465 6.2982 65.6754 20.0309 -3 66.4671",
@@ -43,7 +46,8 @@ const SvgBackground = () => {
           strokeOpacity="0.1"
           strokeWidth={2}
           initial={{ pathLength: 0, pathOffset: 1 }}
-          animate={{ pathLength: 1, pathOffset: 0 }}
+          // animate={{ pathLength: 1, pathOffset: 0 }}
+          animate={{ pathLength: [0, 1, 0], pathOffset: 0 }}
           transition={{
             duration: 5,
             ease: "easeInOut",
@@ -58,6 +62,7 @@ const SvgBackground = () => {
     </svg>
   );
 };
+
 const WhyChoose = () => {
   const slides = [
     {
@@ -86,6 +91,15 @@ const WhyChoose = () => {
     },
   ];
 
+  const slideFromLeft = (delay = 0) => ({
+    hidden: { opacity: 0, x: -50 }, // start off-screen left
+    visible: {
+      opacity: 1,
+      x: 0, // final position
+      transition: { duration: 0.6, ease: "easeOut", delay },
+    },
+  });
+
   return (
     <>
       <main className="bg-[#F5F5F5] py-5 hidden md:block relative">
@@ -98,7 +112,13 @@ const WhyChoose = () => {
           <SvgBackground />
           <div className=" h-full grid md:grid-cols-[65%_1fr]">
             <div className="relative">
-              <div className="absolute top-[10%] md:left-[8%] lg:left-[13%] flex items-start md:gap-2 lg:gap-4">
+              <motion.div
+                className="absolute top-[10%] md:left-[8%] lg:left-[13%] flex items-start md:gap-2 lg:gap-4"
+                variants={slideFromLeft(0)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 <span className="bg-white rounded-full w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center flex-shrink-0">
                   <Image
                     src={Quality}
@@ -110,15 +130,21 @@ const WhyChoose = () => {
                   <span className="font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
                     Unmatched Quality
                   </span>
-                  <span className="font-[inter] font-normal text-[14px] leading-[100%]">
+                  <span className="font-[inter] font-normal text-[13px] lg:text-[14px] leading-[100%]">
                     Aurex Builders upholds the highest standards of
                     construction, ensuring every project reflects superior
                     craftsmanship and lasting value.
                   </span>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="absolute top-[50%] left-[10%] flex items-start md:gap-2 lg:gap-4">
+              <motion.div
+                className="absolute top-[50%] left-[10%] flex items-start md:gap-2 lg:gap-4"
+                variants={slideFromLeft(0.9)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 <span className="bg-white rounded-full w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center flex-shrink-0">
                   <Image
                     src={Time}
@@ -130,15 +156,21 @@ const WhyChoose = () => {
                   <span className="font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
                     Timely Delivery
                   </span>
-                  <span className="font-[inter] font-normal text-[14px] leading-[100%]">
+                  <span className="font-[inter] font-normal text-[13px] lg:text-[14px] leading-[100%]">
                     We pride ourselves on completing projects on schedule
                     without compromising on quality, so you can move into your
                     dream home without delays.
                   </span>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="absolute md:top-[20%] lg:top-[30%] left-[55%] flex items-start md:gap-2 lg:gap-4">
+              <motion.div
+                className="absolute md:top-[20%] lg:top-[30%] left-[55%] flex items-start md:gap-2 lg:gap-4"
+                variants={slideFromLeft(0.5)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 <span className="bg-white rounded-full w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center flex-shrink-0">
                   <Image
                     src={user}
@@ -150,16 +182,22 @@ const WhyChoose = () => {
                   <span className="font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
                     Customer-Centric Approach
                   </span>
-                  <span className="font-[inter] font-normal text-[14px] leading-[100%]">
+                  <span className="font-[inter] font-normal text-[13px] lg:text-[14px] leading-[100%]">
                     Our clients are at the heart of everything we do. From
                     choosing trusted partners to providing exceptional
                     after-sales support, we prioritize your satisfaction every
                     step of the way.
                   </span>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="absolute bottom-[10%] left-[50%] flex items-start md:gap-2 lg:gap-4">
+              <motion.div
+                className="absolute bottom-[10%] left-[50%] flex items-start md:gap-2 lg:gap-4"
+                variants={slideFromLeft(1.3)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 <span className="bg-white rounded-full w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center flex-shrink-0">
                   <Image
                     src={Modern}
@@ -171,15 +209,15 @@ const WhyChoose = () => {
                   <span className="font-[urbanist] font-bold uppercase text-[16px] leading-[100%]">
                     Modern Design & Innovation
                   </span>
-                  <span className="font-[inter] font-normal text-[14px] leading-[100%]">
+                  <span className="font-[inter] font-normal text-[13px] lg:text-[14px] leading-[100%]">
                     Every property is designed with meticulous attention to
                     detail, combining modern aesthetics with innovative,
                     sustainable construction methods.
                   </span>
                 </div>
-              </div>
+              </motion.div>
             </div>
-            {/* Mobile */}
+
             <div className="relative flex flex-col">
               <div className="absolute top-[38%] lg:top-[32%] xl:top-[37%] 2xl:top-[40%] right-[35%] 2xl:right-[40%] flex flex-col items-center text-center">
                 <span className="lg:w-40 w-28 h-28 lg:h-40 flex flex-col justify-center items-center p-3 text-white bg-black rounded-full font-[urbanist] font-medium text-[24px] lg:text-[32px] leading-[100%]">
@@ -187,7 +225,7 @@ const WhyChoose = () => {
                   <span>CHOOSE</span>
                   <span>US</span>
                 </span>
-                <span className="mt-2 text-[16px] md:text-[14px] font-[urbanist] font-bold uppercase">
+                <span className="mt-2 text-[16px] md:text-[14px] font-[urbanist] leading-[100%] font-bold uppercase">
                   Need a Great Place For Your Family?
                 </span>
                 <Button
@@ -199,6 +237,7 @@ const WhyChoose = () => {
           </div>
         </section>
       </main>
+      {/* Mobile */}
       <main className="relative block md:hidden ">
         <section className="w-full h-[450px] flex items-center justify-center overflow-hidden">
           <Image
@@ -248,7 +287,7 @@ const SwiperSection = ({ slides }) => {
           slidesPerView={1}
           loop={true} // keeps autoplay cycling
           autoplay={{
-            delay: 2000,
+            delay: 1500,
             disableOnInteraction: false, // user actions won't stop autoplay
             pauseOnMouseEnter: true, // pause on hover (optional)
           }}
@@ -258,7 +297,11 @@ const SwiperSection = ({ slides }) => {
             <SwiperSlide key={index}>
               <div className="w-[90%] flex flex-col justify-center items-center mx-auto bg-transparent text-center">
                 <div className="bg-white">
-                  <Image src={slide.icon} className="h-8 w-8 mb-2 m-2" />
+                  <Image
+                    src={slide.icon}
+                    className="h-8 w-8 mb-2 m-2"
+                    alt="icon"
+                  />
                 </div>
                 <div>
                   <h3 className="font-[urbanist] font-bold uppercase text-[14px] mb-1 leading-[100%]">
