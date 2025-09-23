@@ -3,18 +3,29 @@ import * as Yup from "yup";
 export const baseSchema = Yup.object().shape({
   name: Yup.string()
     .required("Name is required")
-    .min(2, "Name must be at least 2 characters"),
+    .trim()
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name cannot be longer than 50 characters")
+    .matches(/^[a-zA-Z ]+$/, "Name can only contain letters and spaces"),
 
   whatsapp: Yup.string()
     .required("WhatsApp number is required")
-    .matches(/^\d{10,15}$/, "Enter a valid number (10–15 digits)"),
+    .transform((value) => value.replace(/[\s-]/g, ""))
+    .matches(/^(\+?\d{1,3})?\d{10}$/, "Enter a valid WhatsApp number"),
 
   email: Yup.string()
     .required("Email is required")
-    .email("Enter a valid email"),
+    .email("Enter a valid email address")
+    .max(254, "Email is too long")
+    .matches(
+      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+      "Enter a valid email with proper domain"
+    ),
 });
 
 // Project form schema extends base
 export const projectFormSchema = baseSchema.shape({
-  project: Yup.string().required("Please select a project"),
+  project: Yup.string()
+    .required("Please select a project")
+    .notOneOf([""], "Please select a project"),
 });

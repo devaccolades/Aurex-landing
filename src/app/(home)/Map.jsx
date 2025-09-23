@@ -1,5 +1,6 @@
 import ContactForm from '@/components/forms/ContactForm'
 // import ProjectForm from '@/components/forms/ProjectForm'
+// import ServiceForm from '@/components/forms/ServiceForm'
 import React from 'react'
 
 const Map = () => {
@@ -22,7 +23,8 @@ const Map = () => {
       {/* Right - Contact Form */}
       <div className="flex items-center justify-center bg-white">
         <ContactForm />
-        {/* <ProjectForm /> */}
+        {/* <ProjectForm projectName="Aurex Cascade City" /> */}
+        {/* <ServiceForm service="Web Development" /> */}
       </div>
     </div>
 
