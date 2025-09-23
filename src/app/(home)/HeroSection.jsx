@@ -8,6 +8,7 @@ import Image from "next/image";
 import download from ".././../../public/images/herosection/download.svg";
 import brochure from ".././../../public/images/herosection/up-right.svg";
 import gradient1 from "../../../public/images/herosection/grad1.svg";
+import line_bg from '../../../public/images/herosection/line-bg.svg';
 import Button from "@/components/Button";
 import ProjectForm from "@/components/forms/ProjectForm";
 import Modal from "@/components/forms/Modal";
@@ -16,23 +17,7 @@ const HeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <section className="relative bg-transparent text-black pt-8 md:pt-16 pb-12 overflow-hidden">
-        <div
-          className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-teal-100/40 via-white/0 to-white/0 -translate-x-1/4 -translate-y-1/4"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute top-1/2 -left-1/4 w-[50rem] h-[50rem] border border-gray-200/80 rounded-full -translate-y-1/2"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute top-1/2 -right-1/4 w-[50rem] h-[50rem] border border-gray-200/80 rounded-full -translate-y-1/2"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute -top-1/4 left-1/2 w-[45rem] h-[45rem] border-t border-gray-200/80 rounded-full -translate-x-1/2"
-          aria-hidden="true"
-        ></div>
+      <section className="bg-[url('/images/herosection/line-bg.svg')] relative  text-black pt-8 md:pt-16 pb-8 md:pb-14 lg:pb-20 overflow-hidden">
 
         <div className="relative z-50 container mx-auto px-4 text-start md:text-center flex flex-col md:items-center font-[urbanist] font-medium text-[76px] leading-[70%] ">
           <h1 className="text-4xl sm:text-5xl md:text-6xl text-black ">
@@ -49,7 +34,7 @@ const HeroSection = () => {
           <Button text={"Book a site visit"} />
         </div>
       </section>
-      <section id="Projects" className="pt-10 overflow-hidden">
+      <section id="Projects" className=" overflow-hidden">
         <div className="grid lg:grid-cols-2">
           {projectsData.map((project, index) => (
             <div
