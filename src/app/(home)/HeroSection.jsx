@@ -4,9 +4,48 @@ import Image from "next/image";
 import download from ".././../../public/images/herosection/download.svg";
 import brochure from ".././../../public/images/herosection/up-right.svg";
 import gradient1 from "../../../public/images/herosection/grad1.svg";
+import Button from "@/components/Button";
 
 const HeroSection = () => {
   return (
+    <>
+      <section className="relative bg-white text-black py-24 sm:py-32 overflow-hidden">
+      {/* Background Gradient */}
+      <div
+        className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-teal-100/40 via-white/0 to-white/0 -translate-x-1/4 -translate-y-1/4"
+        aria-hidden="true"
+      ></div>
+
+      {/* Background Arcs - positioned absolutely and behind the content */}
+      <div
+        className="absolute top-1/2 -left-1/4 w-[50rem] h-[50rem] border border-gray-200/80 rounded-full -translate-y-1/2"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="absolute top-1/2 -right-1/4 w-[50rem] h-[50rem] border border-gray-200/80 rounded-full -translate-y-1/2"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="absolute -top-1/4 left-1/2 w-[45rem] h-[45rem] border-t border-gray-200/80 rounded-full -translate-x-1/2"
+        aria-hidden="true"
+      ></div>
+
+
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center font-[urbanist] font-medium text-[76px] leading-[70%] ">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-black tracking-[0.2em]">
+          SHAPING TOMORROW
+        </h1>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-black tracking-[0.2em] mt-2 md:mt-4">
+          DELIVERED TODAY
+        </h1>
+
+        <p className="mt-8 max-w-xl mx-auto text-base md:text-lg text-gray-600">
+          Turning your ideas into reality through meticulous planning and expert execution.
+        </p>
+        <Button text={"Book a site visit"} />
+      </div>
+    </section>
     <section className="container mx-auto py-10">
       {/* Outer Grid - 2 cards per row */}
       <div className="grid md:grid-cols-2">
@@ -22,7 +61,7 @@ const HeroSection = () => {
                 alt="Project Building"
                 width={600}
                 height={100}
-                className="w-full h-[100px] object-cover"
+                className="w-full h-[500px] object-cover"
               />
 
               {/* Status Badge */}
@@ -150,6 +189,7 @@ const HeroSection = () => {
         ))}
       </div>
     </section>
+    </>
   );
 };
 
