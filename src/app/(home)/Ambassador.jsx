@@ -4,6 +4,7 @@ import React from "react";
 const Ambassador = () => {
   return (
     <section
+    id="services"
       className="h-auto "
       style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
     >

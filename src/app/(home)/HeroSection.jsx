@@ -42,7 +42,7 @@ const HeroSection = () => {
           <Button text={"Book a site visit"} />
         </div>
       </section>
-      <section className="pt-10 overflow-hidden">
+      <section id="Projects" className="pt-10 overflow-hidden">
         <div className="grid lg:grid-cols-2">
           {projectsData.map((project, index) => (
             <div
@@ -55,7 +55,7 @@ const HeroSection = () => {
                   alt="Project Building"
                   width={600}
                   height={100}
-                  className="w-full h-[350px] md:h-[480px] object-cover"
+                  className="w-full h-full object-cover"
                 />
 
                 <span
@@ -162,13 +162,17 @@ const HeroSection = () => {
 
                 <div className="px-3 flex gap-4">
                   {project.brochure && (
-                    <button className="flex justify-between flex-1 border-[1px] border-[#E9E9E9] rounded-[10px] px-4 py-2 text-sm font-medium ">
+                    <a
+                      href={project.brochure}
+                      download
+                      className="flex justify-between items-center flex-1 border border-[#E9E9E9] rounded-[10px] px-4 py-2 font-normal font-[urbanist] text-[12px] md:text-[14px]"
+                    >
                       Brochure
                       <Image src={download} alt="download" />
-                    </button>
+                    </a>
                   )}
                   {project.enquire_now && (
-                    <button className="flex justify-between  flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 text-sm font-medium ">
+                    <button className="flex justify-between  flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 font-bold font-[urbanist] text-[12px] md:text-[14px] ">
                       Enquire Now
                       <Image src={brochure} alt="brochure" className="flex" />
                     </button>
