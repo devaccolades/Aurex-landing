@@ -34,6 +34,20 @@
   background-size: 0.2rem 0.2rem; 
 }
 
+.swiper-pagination {
+  bottom: -3px !important; /* push dots lower */
+}
+
+@keyframes aurex-float {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-12px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.aurex-animate-float {
+  animation: aurex-float 5s ease-in-out infinite;
+  transform-origin: center;
+}
 /* .noise-bg {
   background-color: var(--color-primary);
   position: relative;
