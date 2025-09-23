@@ -1,9 +1,16 @@
+"use client"
+import { useState } from "react";
 import React from "react";
+import Modal from "./forms/Modal";
+import ProjectForm from "./forms/ProjectForm";
 
 const Button = ({ text, className, ...props }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
+    <>
     <button
-      className={`relative inline-block mt-2 text-lg font-bold group focus:outline-none ${className}`}
+      onClick={() => setIsModalOpen(true)}
+      className={`relative inline-block mt-2 cursor-pointer text-lg font-bold group focus:outline-none ${className}`}
       {...props}
     >
       <span
@@ -15,6 +22,12 @@ const Button = ({ text, className, ...props }) => {
         {text}
       </span>
     </button>
+    {/* Modal usage */}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+       <ProjectForm onSuccess={() => setIsModalOpen(false)}/>
+      </Modal>
+    </>
+
   );
 };
 
