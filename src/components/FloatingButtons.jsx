@@ -39,17 +39,17 @@ export default function FloatingButtons() {
             className="filter brightness-0 invert" // Makes icon white
           />
           {/* Tooltip */}
-          <span className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {/* <span className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             Chat on WhatsApp
-          </span>
+          </span> */}
         </button>
 
         {/* Enquire Now Button */}
         <div className="relative">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#C19A5D] hover:bg-amber-700   text-white px-3 py-4 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 group writing-vertical"
-            style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+            className="bg-[#C19A5D] hover:bg-amber-700 transform rotate-180   text-white px-3 py-4 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 group writing-vertical"
+            style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}
           >
             <span className="text-[13px] md:text-[20px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold tracking-wider">
               Enquire Now
