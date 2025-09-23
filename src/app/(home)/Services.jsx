@@ -16,11 +16,14 @@ import aurex from "../../../public/images/services/AUREX.svg";
 import cl from "../../../public/images/services/Group.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import Modal from "@/components/forms/Modal";
+import ServiceForm from "@/components/forms/ServiceForm";
 
 
 export default function Services() {
   const [isInView, setIsInView] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -100,24 +103,25 @@ export default function Services() {
   const headingText = "OUR SERVICES".split("");
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full py-16 text-white overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/services/Rectangle 474.svg')" }}
-    >
-      {/* Background elements */}
-      <div className="absolute h-full xl:h-full flex items-center -mt-16 xl:-mt-16">
-        <Image alt="bg" src={cl} height={100} className="h-full w-auto object-cover" />
-      </div>
+    <>
+      <section
+        ref={sectionRef}
+        className="relative w-full py-16 text-white overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/services/Rectangle 474.svg')" }}
+      >
+        {/* Background elements */}
+        <div className="absolute h-full xl:h-full flex items-center -mt-16 xl:-mt-16">
+          <Image alt="bg" src={cl} height={100} className="h-full w-auto object-cover" />
+        </div>
 
-      <Image
-        src={aurex}
-        alt="Background"
-        fill
-        className="absolute inset-0 w-10 h-60 object-contain aurex-float"
-      />
+        <Image
+          src={aurex}
+          alt="Background"
+          fill
+          className="absolute inset-0 w-10 h-60 object-contain aurex-float"
+        />
 
-      <style jsx global>{`
+        <style jsx global>{`
           .flip-container {F
             perspective: 1200px;
             transform-style: preserve-3d;
@@ -234,99 +238,114 @@ export default function Services() {
         `}</style>
 
 
-      <div className="relative z-20 mx-auto px-6 text-center">
-        {/* Heading */}
-        <div className={`transition-all duration-700 ease-out flip-container ${isInView ? 'opacity-100 translate-y-0 flip-y-in' : 'opacity-0 translate-y-8'
-          }`}>
-          <h2 className="services-heading text-2xl md:text-3xl font-medium font-[urbanist] mb-4">
-            {headingText.map((char, i) => (
-              <span key={i} className="inline-block">
-                {char === " " ? "\u00A0" : char}
-              </span>
-            ))}
-          </h2>
-          <p className="mb-8 text-gray-200 font-[inter] text-[12px] md:text-[16px]">
-            We provide end-to-end real estate solutions designed to make your journey seamless
-          </p>
-        </div>
+        <div className="relative z-20 mx-auto px-6 text-center">
+          {/* Heading */}
+          <div className={`transition-all duration-700 ease-out flip-container ${isInView ? 'opacity-100 translate-y-0 flip-y-in' : 'opacity-0 translate-y-8'
+            }`}>
+            <h2 className="services-heading text-2xl md:text-3xl font-medium font-[urbanist] mb-4">
+              {headingText.map((char, i) => (
+                <span key={i} className="inline-block">
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </h2>
+            <p className="mb-8 text-gray-200 font-[inter] text-[12px] md:text-[16px]">
+              We provide end-to-end real estate solutions designed to make your journey seamless
+            </p>
+          </div>
 
-        {/* Mobile: Swiper */}
-        <div className="block md:hidden">
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            modules={[Pagination]}
-            className="pb-20 mt-2 h-[400px]"
-          >
-            {servicesData.map((service, index) => (
-              <SwiperSlide key={service.id}>
-                <div className={`flex flex-col items-center font-[inter] text-center transition-all duration-700 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                  }`} style={{ transitionDelay: `${300 + index * 150}ms` }}>
-                  {/* Circular Image */}
-                  <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg mx-auto group">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover rounded-full transition-transform duration-500 ease-out group-hover:scale-110"
-                      sizes="240px"
-                    />
-                  </div>
-                  <div className="items-start text-left">
-                    <h3 className="mt-6 text-md lg:text-lg font-[inter] items-start font-semibold">
-                      {service.title}
-                    </h3>
-                    <p className="text-[12px] lg:text-sm text-gray-300 items-start font-[inter]">
-                      {service.description}
-                    </p>
-                    <button className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200 group">
-                      ENQUIRE NOW
-                      <ArrowUpRight className="ml-1 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </button>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-
-        {/* Desktop Grid */}
-        <div className="hidden md:grid grid-cols-3 gap-10">
-          {servicesData.map((service, index) => (
-            <div
-              key={service.id}
-              className={`flex flex-col items-center font-[inter] text-center transition-all duration-700 ease-out hover:-translate-y-2 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
-              style={{ transitionDelay: `${300 + index * 150}ms` }}
+          {/* Mobile: Swiper */}
+          <div className="block md:hidden">
+            <Swiper
+              spaceBetween={20}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              modules={[Pagination]}
+              className="pb-20 mt-2 h-[400px]"
             >
-              {/* Circular Image */}
-              <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl group">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover rounded-full transition-transform duration-500 ease-out group-hover:scale-110"
-                  sizes="240px"
-                />
+              {servicesData.map((service, index) => (
+                <SwiperSlide key={service.id}>
+                  <div className={`flex flex-col items-center font-[inter] text-center transition-all duration-700 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                    }`} style={{ transitionDelay: `${300 + index * 150}ms` }}>
+                    {/* Circular Image */}
+                    <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg mx-auto group">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover rounded-full transition-transform duration-500 ease-out group-hover:scale-110"
+                        sizes="240px"
+                      />
+                    </div>
+                    <div className="items-start text-left">
+                      <h3 className="mt-6 text-md lg:text-lg font-[inter] items-start font-semibold">
+                        {service.title}
+                      </h3>
+                      <p className="text-[12px] lg:text-sm text-gray-300 items-start font-[inter]">
+                        {service.description}
+                      </p>
+                      <button
+                        onClick={() => {
+                          setSelectedService(service.title);
+                          setIsModalOpen(true);
+                        }}
+                        className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200 group">
+                        ENQUIRE NOW
+                        <ArrowUpRight className="ml-1 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </button>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-3 gap-10">
+            {servicesData.map((service, index) => (
+              <div
+                key={service.id}
+                className={`flex flex-col items-center font-[inter] text-center transition-all duration-700 ease-out hover:-translate-y-2 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  }`}
+                style={{ transitionDelay: `${300 + index * 150}ms` }}
+              >
+                {/* Circular Image */}
+                <div className="relative w-60 h-60 rounded-full overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl group">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover rounded-full transition-transform duration-500 ease-out group-hover:scale-110"
+                    sizes="240px"
+                  />
+                </div>
+                <div className="items-start text-left">
+                  <h3 className="mt-6 text-md lg:text-lg font-[inter] items-start font-semibold">
+                    {service.title}
+                  </h3>
+                  <p className="text-[12px] lg:text-sm text-gray-300 items-start font-[inter]">
+                    {service.description}
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSelectedService(service.title);
+                      setIsModalOpen(true);
+                    }}
+                    className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200 group">
+                    ENQUIRE NOW
+                    <ArrowUpRight className="ml-1 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </button>
+                </div>
               </div>
-              <div className="items-start text-left">
-                <h3 className="mt-6 text-md lg:text-lg font-[inter] items-start font-semibold">
-                  {service.title}
-                </h3>
-                <p className="text-[12px] lg:text-sm text-gray-300 items-start font-[inter]">
-                  {service.description}
-                </p>
-                <button className="mt-4 inline-flex items-center font-[urbanist] text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200 group">
-                  ENQUIRE NOW
-                  <ArrowUpRight className="ml-1 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <ServiceForm service={selectedService} onSuccess={() => setIsModalOpen(false)} />
+      </Modal>
+
+    </>
+
   );
 }
-
