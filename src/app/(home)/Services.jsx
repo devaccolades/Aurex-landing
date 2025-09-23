@@ -117,7 +117,7 @@ export default function Services() {
         className="absolute inset-0 w-10 h-60 object-contain aurex-float"
       />
 
-      {/* <style jsx global>{`
+      <style jsx global>{`
   .flip-container {F
     perspective: 1200px;
     transform-style: preserve-3d;
@@ -231,7 +231,7 @@ export default function Services() {
   .aurex-float {
     animation: floatTilt 6s ease-in-out infinite;
   }
-`}</style> */}
+`}</style>
 
 
       <div className="relative z-20 mx-auto px-6 text-center">
