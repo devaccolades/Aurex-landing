@@ -40,7 +40,7 @@ const HeroSection = () => {
           DELIVERED TODAY
         </h1>
 
-        <p className="mt-8 max-w-xl mx-auto text-base md:text-lg text-gray-600">
+        <p className="mt-8 max-w-xl mx-auto text-base md:text-lg text-gray-600 font-[inter] font-normal  ">
           Turning your ideas into reality through meticulous planning and expert execution.
         </p>
         <Button text={"Book a site visit"} />
