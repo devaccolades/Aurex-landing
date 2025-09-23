@@ -72,9 +72,9 @@ const Ambassador = () => {
               alt="bg image"
               className="h-[158px] object-cover w-full opacity-10"
             />
-            <div className="absolute top-0 right-0 h-[429px] w-[228px] overflow-hidden">
+            <div className="absolute top-0 right-0 h-[429px] w-[228px] overflow-hidden -mt-[5px]">
               <Image
-                src={"/images/ambassador/bhavana.png"}
+                src={"/images/ambassador/bavana.svg"}
                 height={500}
                 width={500}
                 alt="ambassador image"
@@ -102,14 +102,14 @@ const Ambassador = () => {
             >
               We are pleased to introduce our brand ambassador.
             </p>
-            <div className="flex justify-end">
-              <p className="font-[urbanist] text-[64px] leading-[40px] tracking-[-0.08em] font-medium uppercase">
+            <div className="flex justify-end ">
+              <p className="mr-[10px] font-[urbanist] text-[64px] leading-[40px] tracking-[-0.08em] font-medium uppercase">
                 BHAVANA
               </p>
             </div>
             <Image
               src={"/images/ambassador/thrissur symbolic.png"}
-              className="h-[170px] w-full object-cover"
+              className="h-[170px] w-full object-cover object-top"
               width={100}
               height={100}
               alt="bg image"
@@ -121,9 +121,9 @@ const Ambassador = () => {
       {/* md and above section  */}
 
       <div className="hidden md:relative md:flex md:flex-col">
-        <div className="absolute bottom-0 right-[40%] md:h-[826px] ambassadorHight w-[436px] overflow-hidden">
+        <div className="absolute bottom-0 right-[45%] md:h-[700px] w-[380px] xl:h-[820px] xl:w-[436px] ambassadorHight  overflow-hidden">
           <Image
-            src={"/images/ambassador/bhavana.png"}
+            src={"/images/ambassador/bavana.svg"}
             height={500}
             width={500}
             alt="ambassador image"
@@ -238,11 +238,10 @@ const Ambassador = () => {
           </div>
           <div className="w-[50%] h-full">
             <Image
-              src={"/images/ambassador/ambflower.png"}
+              src={"/images/ambassador/elephent.svg"}
               width={100}
               height={100}
               alt="bg image"
-              style={{ transform: "scaleX(-1)" }}
               className="h-full object-cover w-full opacity-10 "
             />
           </div>
