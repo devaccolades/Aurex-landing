@@ -1,12 +1,43 @@
+"use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Ambassador = () => {
+  const sectionRef = useRef(null);
+  const splitText = SplitText.create(".title", { type: "chars" });
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%", // when top of section reaches 80% of viewport height
+        toggleActions: "play none none none", // play only once
+        scrub: true,
+        markers: false,
+      },
+    });
+
+    tl.from(splitText.chars, {
+      duration: 1,
+      opacity: 0,
+      y: 20,
+      stagger: 0.05,
+      ease: "power2.out",
+    });
+  }, []);
+
   return (
     <section
     id="services"
       className="h-auto "
       style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
+      ref={sectionRef}
     >
       <div className="md:hidden relative flex flex-col w-[85%] mx-auto ">
         <div className="relative ">
@@ -21,7 +52,9 @@ const Ambassador = () => {
             ></div>
           </div>
           <div className="relative h-[200px] mx-[8px] my-[18px] font-[urbanist] font-medium tracking-normal text-[32px] leading-[32px]  text-left text-[#000000] uppercase z-50">
-            <h1>Manifesting your dream into a Magnificent reality</h1>
+            <h1 className="title opacity-100">
+              Manifesting your dream into a Magnificent reality
+            </h1>
           </div>
         </div>
 
@@ -128,7 +161,7 @@ const Ambassador = () => {
             height={500}
             width={500}
             alt="ambassador image"
-            className="relative h-full w-full object-cover translate-y-16 z-50"
+            className="relative h-full w-full object-cover translate-y-16 z-30"
           />
         </div>
         <div className="relative flex h-[288px]">
@@ -143,7 +176,7 @@ const Ambassador = () => {
               <div className="absolute bottom-0 right-0 ">
                 <div
                   style={{ background: "rgba(168, 168, 168, 1)" }}
-                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-50 "
+                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-40 "
                 ></div>
               </div>
             </div>
@@ -157,7 +190,7 @@ const Ambassador = () => {
               <div className="absolute bottom-0 right-0 ">
                 <div
                   style={{ background: "rgba(168, 168, 168, 1)" }}
-                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-50 "
+                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-40 "
                 ></div>
               </div>
             </div>
@@ -171,7 +204,7 @@ const Ambassador = () => {
               <div className="absolute bottom-0 right-0 ">
                 <div
                   style={{ background: "rgba(168, 168, 168, 1)" }}
-                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-50 "
+                  className="relative h-[10px] w-[10px] rounded-full translate-x-1.5 translate-y-1.5 z-40 "
                 ></div>
               </div>
             </div>

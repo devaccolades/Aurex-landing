@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import React from "react";
 import Modal from "./forms/Modal";
@@ -22,12 +22,11 @@ const Button = ({ text, className, ...props }) => {
           {text}
         </span>
       </button>
- 
+
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <ProjectForm onSuccess={() => setIsModalOpen(false)} />
       </Modal>
     </>
-
   );
 };
 
