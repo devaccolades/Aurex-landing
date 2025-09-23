@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono, Urbanist, Inter } from "next/font/google";
 import "./globals.css";
+import FloatingButtons from "@/components/FloatingButtons";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${urbanist.variable} antialiased`}>
         {children}
+        <FloatingButtons />
       </body>
     </html>
   );
