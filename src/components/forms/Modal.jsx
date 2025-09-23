@@ -19,7 +19,7 @@ export default function Modal({ isOpen, onClose, children }) {
       onClick={onClose} // click outside
     >
       <div
-        className="bg-white rounded-2xl shadow-lg w-full max-w-lg p-6 relative"
+        className="bg-white rounded-2xl shadow-lg w-full max-w-lg p-6 relative "
         onClick={(e) => e.stopPropagation()} // stop inside clicks
       >
         {/* Close Button */}

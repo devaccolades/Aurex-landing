@@ -34,7 +34,7 @@ const HeroSection = () => {
           aria-hidden="true"
         ></div>
 
-        <div className="relative z-10 container mx-auto px-4 text-start md:text-center flex flex-col md:items-center font-[urbanist] font-medium text-[76px] leading-[70%] ">
+        <div className="relative z-50 container mx-auto px-4 text-start md:text-center flex flex-col md:items-center font-[urbanist] font-medium text-[76px] leading-[70%] ">
           <h1 className="text-4xl sm:text-5xl md:text-6xl text-black ">
             SHAPING TOMORROW
           </h1>
@@ -87,7 +87,7 @@ const HeroSection = () => {
                 <Image
                   src={gradient1}
                   alt="gradient1"
-                  className="absolute top-0 left-0 z-50"
+                  className="absolute top-0 left-0 z-40"
                 />
 
                 <div className="pt-5 px-5 flex items-start justify-between">
@@ -96,7 +96,7 @@ const HeroSection = () => {
                     alt="Project Logo"
                     width={100}
                     height={40}
-                    className="object-contain z-50"
+                    className="object-contain z-40"
                   />
                   <div className="text-right flex gap-1">
                     <Image
