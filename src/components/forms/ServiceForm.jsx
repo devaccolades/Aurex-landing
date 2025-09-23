@@ -1,30 +1,30 @@
 "use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
 
-export default function ServiceForm({ projectName = "" }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    whatsapp: "",
-    email: "",
-    project: "",
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { baseSchema } from "@/lib/validationSchemas";
+
+export default function ServiceForm({ service }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: yupResolver(baseSchema),
+    mode: "all",
+    defaultValues: {
+      name: "",
+      whatsapp: "",
+      email: "",
+    },
   });
 
-  useEffect(() => {
-    if (projectName) {
-      setFormData((prev) => ({ ...prev, project: projectName }));
-    }
-  }, [projectName]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    // submit logic here
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+    // Add your API call here
+    reset({ name: "", whatsapp: "", email: "" });
   };
 
   return (
@@ -47,23 +47,30 @@ export default function ServiceForm({ projectName = "" }) {
           ALL YOUR QUESTIONS
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Name & WhatsApp */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1" htmlFor="name">
+              <label
+                className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
+                htmlFor="name"
+              >
                 Name
               </label>
               <input
                 type="text"
-                name="name"
                 id="name"
                 placeholder="Enter your name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full border border-[#BABABA] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist]"
-                required
+                {...register("name")}
+                className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${
+                  errors.name ? "border-red-500" : "border-[#BABABA]"
+                }`}
               />
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
             <div>
@@ -75,65 +82,60 @@ export default function ServiceForm({ projectName = "" }) {
               </label>
               <input
                 type="text"
-                name="whatsapp"
                 id="whatsapp"
                 placeholder="Enter WhatsApp Number"
-                value={formData.whatsapp}
-                onChange={handleChange}
-                className="w-full border border-[#BABABA] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist]"
-                required
+                {...register("whatsapp")}
+                className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${
+                  errors.whatsapp ? "border-red-500" : "border-[#BABABA]"
+                }`}
               />
+              {errors.whatsapp && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.whatsapp.message}
+                </p>
+              )}
             </div>
           </div>
 
           {/* Email */}
           <div>
-            <label className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1" htmlFor="email">
+            <label
+              className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
               type="email"
-              name="email"
               id="email"
               placeholder="Enter Email address"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full border border-[#BABABA] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist]"
-              required
+              {...register("email")}
+              className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${
+                errors.email ? "border-red-500" : "border-[#BABABA]"
+              }`}
             />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
-          {/* Project + Submit on same row */}
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 items-end">
-            <div>
-              <label
-                className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
-                htmlFor="project"
-              >
-                Services
-              </label>
-              <select
-                name="project"
-                id="project"
-                value={formData.project}
-                onChange={handleChange}
-                className="w-full border border-[#BABABA] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] text-[#BABABA]"
-                required
-              >
-                <option value="">Select service</option>
-                <option value="service1">service 1</option>
-                <option value="service2">service 2</option>
-                <option value="service3">service 3</option>
-              </select>
-            </div>
+          {/* Service (readonly, hidden input for submission) */}
+          <input type="hidden" value={service} {...register("service")} />
 
-            <button
-              type="submit"
-              className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] md:mt-5"
-            >
-              Submit
-            </button>
-          </div>
+          <p className="text-sm text-gray-600 font-[inter]">
+            Selected Service: <span className="font-semibold">{service}</span>
+          </p>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] md:mt-5 disabled:opacity-50"
+          >
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </button>
         </form>
       </div>
     </div>

@@ -1,30 +1,41 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useEffect } from "react";
 import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { projectFormSchema } from "@/lib/validationSchemas";
+import { projectsData } from "@/data/cardData";
 
 export default function ProjectForm({ projectName = "" }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    whatsapp: "",
-    email: "",
-    project: "",
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: yupResolver(projectFormSchema),
+    mode: "all", // can switch to onChange for live validation
+    defaultValues: {
+      name: "",
+      whatsapp: "",
+      email: "",
+      project: projectName || "",
+    },
   });
 
+  // Update project if projectName prop changes
   useEffect(() => {
     if (projectName) {
-      setFormData((prev) => ({ ...prev, project: projectName }));
+      setValue("project", projectName);
     }
-  }, [projectName]);
+  }, [projectName, setValue]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    // submit logic here
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+    // Add your API call here
+    reset({ name: "", whatsapp: "", email: "", project: projectName || "" });
   };
 
   return (
@@ -47,7 +58,7 @@ export default function ProjectForm({ projectName = "" }) {
           ALL YOUR QUESTIONS
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Name & WhatsApp */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -56,33 +67,28 @@ export default function ProjectForm({ projectName = "" }) {
               </label>
               <input
                 type="text"
-                name="name"
                 id="name"
                 placeholder="Enter your name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full border border-[#BABABA] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist]"
-                required
+                {...register("name")}
+                className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.name ? "border-red-500" : "border-[#BABABA]"
+                  }`}
               />
+              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
             </div>
 
             <div>
-              <label
-                className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
-                htmlFor="whatsapp"
-              >
+              <label className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1" htmlFor="whatsapp">
                 WhatsApp No
               </label>
               <input
                 type="text"
-                name="whatsapp"
                 id="whatsapp"
                 placeholder="Enter WhatsApp Number"
-                value={formData.whatsapp}
-                onChange={handleChange}
-                className="w-full border border-[#BABABA] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist]"
-                required
+                {...register("whatsapp")}
+                className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.whatsapp ? "border-red-500" : "border-[#BABABA]"
+                  }`}
               />
+              {errors.whatsapp && <p className="text-red-500 text-xs mt-1">{errors.whatsapp.message}</p>}
             </div>
           </div>
 
@@ -93,17 +99,16 @@ export default function ProjectForm({ projectName = "" }) {
             </label>
             <input
               type="email"
-              name="email"
               id="email"
               placeholder="Enter Email address"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full border border-[#BABABA] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist]"
-              required
+              {...register("email")}
+              className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.email ? "border-red-500" : "border-[#BABABA]"
+                }`}
             />
+            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
           </div>
 
-          {/* Project + Submit on same row */}
+          {/* Project + Submit */}
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 items-end">
             <div>
               <label
@@ -112,26 +117,48 @@ export default function ProjectForm({ projectName = "" }) {
               >
                 Project
               </label>
-              <select
-                name="project"
-                id="project"
-                value={formData.project}
-                onChange={handleChange}
-                className="w-full border border-[#BABABA] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] text-[#BABABA]"
-                required
-              >
-                <option value="">Select project</option>
-                <option value="project1">Project 1</option>
-                <option value="project2">Project 2</option>
-                <option value="project3">Project 3</option>
-              </select>
+
+              {projectName ? (
+                // Read-only display if projectName is passed
+                <input
+                  type="text"
+                  id="project"
+                  value={projectName}
+                  readOnly
+                  className="w-full border rounded-lg px-3 py-2 bg-gray-100 text-black font-[urbanist]"
+                  {...register("project")}
+                />
+              ) : (
+                // Dropdown if no projectName is passed
+                <select
+                  id="project"
+                  {...register("project")}
+                  className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.project ? "border-red-500 text-black" : "border-[#BABABA] text-black"
+                    }`}
+                >
+                  <option value="" disabled hidden>
+                    Select project
+                  </option>
+                  {projectsData.map((project) => (
+                    <option key={project.id} value={project.title}>
+                      {project.title}
+                    </option>
+                  ))}
+                </select>
+              )}
+
+              {errors.project && (
+                <p className="text-red-500 text-xs mt-1">{errors.project.message}</p>
+              )}
             </div>
+
 
             <button
               type="submit"
-              className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] md:mt-5"
+              disabled={isSubmitting}
+              className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] md:mt-5 disabled:opacity-50"
             >
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>
