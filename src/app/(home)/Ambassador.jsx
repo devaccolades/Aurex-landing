@@ -67,8 +67,8 @@ const Ambassador = () => {
           <div className="h-[425px] flex relative">
             <Image
               src={"/images/ambassador/ambflower.png"}
-              width={100}
-              height={100}
+              width={500}
+              height={500}
               alt="bg image"
               className="h-[158px] object-cover w-full opacity-10"
             />
@@ -77,6 +77,7 @@ const Ambassador = () => {
                 src={"/images/ambassador/bhavana.png"}
                 height={500}
                 width={500}
+                alt="ambassador image"
                 className="h-full w-full object-cover object-top -mb-[100px] translate-y-10"
               />
             </div>
@@ -120,6 +121,15 @@ const Ambassador = () => {
       {/* md and above section  */}
 
       <div className="hidden md:relative md:flex md:flex-col">
+        <div className="absolute bottom-0 right-[40%] md:h-[826px] [&@media(min-width:1900px)]:h-[1000px] [&@media(min-width:1900px)]:w-full  w-[436px] overflow-hidden">
+          <Image
+            src={"/images/ambassador/bhavana.png"}
+            height={500}
+            width={500}
+            alt="ambassador image"
+            className="relative h-full w-full object-cover translate-y-28 z-50"
+          />
+        </div>
         <div className="relative flex h-[288px]">
           <div className="absolute top-0 h-full w-full flex">
             <div
@@ -152,13 +162,13 @@ const Ambassador = () => {
             ></div>
           </div>
           <div className="w-[50%] h-full flex items-center justify-center">
-            <h1 className="font-[urbanist] font-medium tracking-normal text-[40px] leading-[40px] text-left text-[#000000] uppercase max-w-7/12">
+            <h1 className="font-[urbanist] font-medium tracking-normal md:text-[36px] md:leading-[36px] xl:text-[40px] xl:leading-[40px] text-left text-[#000000] md:max-w-11/12 uppercase xl:max-w-7/12">
               Manifesting your dream into a Magnificent reality
             </h1>
           </div>
           <div className="w-[50%] h-full flex items-center justify-center">
             <p
-              className="font-[inter] font-normal text-[16px] leading-[100%] tracking-normal max-w-9/12"
+              className="font-[inter] font-normal md:text-[14px] md:leading-[16px] xl:text-[16px] xl:leading-[100%] xl:tracking-normal xl:max-w-9/12"
               style={{ color: "rgba(52, 52, 46, 1)" }}
             >
               Aurex builders ensures to fulfill the dream of our customers by
@@ -173,8 +183,8 @@ const Ambassador = () => {
             </p>
           </div>
         </div>
-
-        <div className="relative flex h-[329px]">
+        {/* second section in tab and above screens */}
+        <div className="relative flex md:h-[260px] xl:h-[329px] [&@media(min-width:1900px)]:h-[520px]">
           <div className="absolute top-0 h-full w-full flex">
             <div
               className="w-[25%]"
@@ -211,15 +221,16 @@ const Ambassador = () => {
               width={100}
               height={100}
               alt="bg image"
-              className="h-full object-cover w-full opacity-10"
+              style={{ transform: "scaleX(-1)" }}
+              className="h-full object-cover w-full opacity-10 "
             />
           </div>
           <div className="w-[50%] h-full flex flex-col justify-around ">
-            <p className="ml-[37px] font-[urbanist] text-[24px] leading-[24px] tracking-normal font-medium uppercase max-w-64">
+            <p className="md:ml-[10px] xl:ml-[37px] font-[urbanist] xl:text-[24px] xl:leading-[24px] xl:tracking-normal font-medium uppercase max-w-64">
               We are pleased to introduce our brand ambassador.
             </p>
-            <div className="flex ml-[37px]">
-              <p className="font-[urbanist] text-[128px] leading-[40px] tracking-[-0.08em] font-medium uppercase">
+            <div className="flex md:ml-[10px] xl:ml-[37px]">
+              <p className="font-[urbanist] md:text-[96px] md:leading-[96px] xl:text-[128px] xl:leading-[40px] tracking-[-0.08em] font-medium uppercase">
                 BHAVANA
               </p>
             </div>
@@ -228,23 +239,25 @@ const Ambassador = () => {
 
         {/* 3rd section  */}
 
-        <div className="relative flex h-[390px]">
+        <div className="relative flex md:h-[280px] lg:h-[390px] [&@media(min-width:1900px)]:h-[560px]">
           <div className="w-[50%] h-full flex items-center justify-center overflow-hidden">
             <div
-              className="h-[1000px] w-[1px] rotate-63"
+              className="h-[1000px] 2xl:h-[1500px] w-[1px] md:rotate-54 lg:rotate-63 [&@media(min-width:1900px)]:rotate-67"
               style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
             ></div>
             <div
-              className="h-[1000px] w-[1px] -rotate-63"
+              className="h-[1000px] 2xl:h-[1500px] w-[1px] md:-rotate-54 lg:-rotate-63 [&@media(min-width:1900px)]:-rotate-67"
               style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
             ></div>
           </div>
           <div className="w-[50%] h-full">
             <Image
-              src={"/images/ambassador/thrissur symbolic.png"}
-              className="h-full w-full object-cover"
-              width={100}
-              height={100}
+              src={"/images/ambassador/temple.webp"}
+              className="h-full w-full object-cover object-top"
+              width={1000}
+              height={750}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              // style={{ width: "100%", height: "auto" }}
               alt="bg image"
             />
           </div>
