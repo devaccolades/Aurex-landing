@@ -118,120 +118,120 @@ export default function Services() {
       />
 
       <style jsx global>{`
-  .flip-container {F
-    perspective: 1200px;
-    transform-style: preserve-3d;
-  }
+          .flip-container {F
+            perspective: 1200px;
+            transform-style: preserve-3d;
+          }
 
-  @keyframes flipInYDiv {
-    0% {
-      transform: perspective(1200px) rotateY(-90deg);
-      opacity: 0;
-    }
-    40% {
-      transform: perspective(1200px) rotateY(15deg);
-      opacity: 0.7;
-    }
-    70% {
-      transform: perspective(1200px) rotateY(-8deg);
-      opacity: 0.9;
-    }
-    85% {
-      transform: perspective(1200px) rotateY(4deg);
-      opacity: 0.95;
-    }
-    100% {
-      transform: perspective(1200px) rotateY(0deg);
-      opacity: 1;
-    }
-  }
+          @keyframes flipInYDiv {
+            0% {
+              transform: perspective(1200px) rotateY(-90deg);
+              opacity: 0;
+            }
+            40% {
+              transform: perspective(1200px) rotateY(15deg);
+              opacity: 0.7;
+            }
+            70% {
+              transform: perspective(1200px) rotateY(-8deg);
+              opacity: 0.9;
+            }
+            85% {
+              transform: perspective(1200px) rotateY(4deg);
+              opacity: 0.95;
+            }
+            100% {
+              transform: perspective(1200px) rotateY(0deg);
+              opacity: 1;
+            }
+          }
 
-  .flip-y-in {
-    animation: flipInYDiv 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    transform-origin: center center;
-  }
+          .flip-y-in {
+            animation: flipInYDiv 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transform-origin: center center;
+          }
 
-  @keyframes flipInYDivSmooth {
-    0% {
-      transform: perspective(1000px) rotateY(-75deg);
-      opacity: 0;
-    }
-    60% {
-      transform: perspective(1000px) rotateY(10deg);
-      opacity: 0.8;
-    }
-    80% {
-      transform: perspective(1000px) rotateY(-3deg);
-      opacity: 0.95;
-    }
-    100% {
-      transform: perspective(1000px) rotateY(0deg);
-      opacity: 1;
-    }
-  }
+          @keyframes flipInYDivSmooth {
+            0% {
+              transform: perspective(1000px) rotateY(-75deg);
+              opacity: 0;
+            }
+            60% {
+              transform: perspective(1000px) rotateY(10deg);
+              opacity: 0.8;
+            }
+            80% {
+              transform: perspective(1000px) rotateY(-3deg);
+              opacity: 0.95;
+            }
+            100% {
+              transform: perspective(1000px) rotateY(0deg);
+              opacity: 1;
+            }
+          }
 
-  .flip-y-smooth {
-    animation: flipInYDivSmooth 1s ease-out forwards;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    transform-origin: center center;
-  }
+          .flip-y-smooth {
+            animation: flipInYDivSmooth 1s ease-out forwards;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transform-origin: center center;
+          }
 
-  @keyframes flipInYDivDramatic {
-    0% {
-      transform: perspective(1200px) rotateY(-120deg) scale(0.9);
-      opacity: 0;
-    }
-    50% {
-      transform: perspective(1200px) rotateY(20deg) scale(1.05);
-      opacity: 0.7;
-    }
-    75% {
-      transform: perspective(1200px) rotateY(-10deg) scale(0.98);
-      opacity: 0.9;
-    }
-    90% {
-      transform: perspective(1200px) rotateY(5deg) scale(1.02);
-      opacity: 0.98;
-    }
-    100% {
-      transform: perspective(1200px) rotateY(0deg) scale(1);
-      opacity: 1;
-    }
-  }
+          @keyframes flipInYDivDramatic {
+            0% {
+              transform: perspective(1200px) rotateY(-120deg) scale(0.9);
+              opacity: 0;
+            }
+            50% {
+              transform: perspective(1200px) rotateY(20deg) scale(1.05);
+              opacity: 0.7;
+            }
+            75% {
+              transform: perspective(1200px) rotateY(-10deg) scale(0.98);
+              opacity: 0.9;
+            }
+            90% {
+              transform: perspective(1200px) rotateY(5deg) scale(1.02);
+              opacity: 0.98;
+            }
+            100% {
+              transform: perspective(1200px) rotateY(0deg) scale(1);
+              opacity: 1;
+            }
+          }
 
-  .flip-y-dramatic {
-    animation: flipInYDivDramatic 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    transform-origin: center center;
-  }
+          .flip-y-dramatic {
+            animation: flipInYDivDramatic 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transform-origin: center center;
+          }
 
-  @keyframes floatTilt {
-    0%, 100% { 
-      transform: translateY(0) rotate(0deg);
-      opacity: 0.8;
-    }
-    25% { 
-      transform: translateY(-15px) rotate(-5deg);
-      opacity: 0.9;
-    }
-    50% { 
-      transform: translateY(-8px) rotate(3deg);
-      opacity: 1;
-    }
-    75% { 
-      transform: translateY(-12px) rotate(-3deg);
-      opacity: 0.95;
-    }
-  }
-  
-  .aurex-float {
-    animation: floatTilt 6s ease-in-out infinite;
-  }
-`}</style>
+          @keyframes floatTilt {
+            0%, 100% { 
+              transform: translateY(0) rotate(0deg);
+              opacity: 0.8;
+            }
+            25% { 
+              transform: translateY(-15px) rotate(-5deg);
+              opacity: 0.9;
+            }
+            50% { 
+              transform: translateY(-8px) rotate(3deg);
+              opacity: 1;
+            }
+            75% { 
+              transform: translateY(-12px) rotate(-3deg);
+              opacity: 0.95;
+            }
+          }
+          
+          .aurex-float {
+            animation: floatTilt 6s ease-in-out infinite;
+          }
+        `}</style>
 
 
       <div className="relative z-20 mx-auto px-6 text-center">
