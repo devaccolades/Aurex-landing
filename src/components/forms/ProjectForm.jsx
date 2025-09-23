@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { projectFormSchema } from "@/lib/validationSchemas";
 import { projectsData } from "@/data/cardData";
+import Swal from "sweetalert2";
 
-export default function ProjectForm({ projectName = "" }) {
+
+export default function ProjectForm({ onSuccess, projectName = "" }) {
   const {
     register,
     handleSubmit,
@@ -25,17 +27,138 @@ export default function ProjectForm({ projectName = "" }) {
     },
   });
 
-  // Update project if projectName prop changes
-  useEffect(() => {
-    if (projectName) {
-      setValue("project", projectName);
-    }
-  }, [projectName, setValue]);
+  const onSubmit = async (data) => {
+    try {
+      // 🎨 Show loading animation while submitting
+      Swal.fire({
+        title: 'Sending enquiry...',
+        text: 'Please wait while we process your enquiry',
+        icon: 'info',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
 
-  const onSubmit = (data) => {
-    console.log("Form submitted:", data);
-    // Add your API call here
-    reset({ name: "", whatsapp: "", email: "", project: projectName || "" });
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      console.log("Enquiry submitted:", data);
+
+      // Reset form
+      reset({
+        name: "",
+        whatsapp: "",
+        email: "",
+      });
+
+      // 🎉 Animated success with custom styling
+      const result = await Swal.fire({
+        title: "📧 Thank you!",
+        text: "Your enquiry has been received successfully!",
+        icon: "success",
+        confirmButtonText: "Great!",
+        showCancelButton: true,
+        cancelButtonText: "View Summary",
+        confirmButtonColor: "#10B981",
+        cancelButtonColor: "#6B7280",
+        background: "#F9FAFB",
+        customClass: {
+          popup: "animate__animated animate__bounceIn",
+          confirmButton: "px-6 py-2 rounded-lg font-medium",
+          cancelButton: "px-6 py-2 rounded-lg font-medium"
+        },
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      });
+
+      // Handle user choice
+      if (result.isConfirmed) {
+        // User clicked "Great!"
+        if (onSuccess) onSuccess();
+      } else if (result.isDismissed && result.dismiss === Swal.DismissReason.cancel) {
+        // User clicked "View Summary" 
+        await Swal.fire({
+          title: "📋 Enquiry Summary",
+          html: `
+          <div class="text-left space-y-3">
+            <div class="bg-blue-50 p-3 rounded-lg border border-blue-200">
+              <p class="text-sm font-medium text-blue-800">👤 Name: ${data.name}</p>
+            </div>
+            <div class="bg-green-50 p-3 rounded-lg border border-green-200">
+              <p class="text-sm font-medium text-green-800">📧 Email: ${data.email}</p>
+            </div>
+            <div class="bg-purple-50 p-3 rounded-lg border border-purple-200">
+              <p class="text-sm font-medium text-purple-800">💬 WhatsApp: ${data.whatsapp}</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+              <p class="text-sm font-medium text-gray-800">💭 project: ${data.project || 'Not specified'}</p>
+            </div>
+            <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-200 mt-4">
+              <p class="text-xs text-yellow-700">🕐 We'll get back to you within 24 hours!</p>
+            </div>
+          </div>
+        `,
+          icon: "info",
+          confirmButtonText: "Perfect!",
+          confirmButtonColor: "#3B82F6"
+        });
+
+        // Close modal after summary view
+        if (onSuccess) onSuccess();
+      }
+
+    } catch (error) {
+      console.error(error);
+
+      // 🚨 Enhanced error handling with options
+      const errorResult = await Swal.fire({
+        title: "Oops! Something went wrong",
+        text: "We couldn't send your enquiry right now.",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        showCancelButton: true,
+        cancelButtonText: "Contact Support",
+        confirmButtonColor: "#EF4444",
+        cancelButtonColor: "#6B7280",
+        footer: '<small class="text-gray-500">Error occurred at: ' + new Date().toLocaleTimeString() + '</small>',
+        customClass: {
+          popup: "animate__animated animate__shakeX"
+        }
+      });
+
+      if (errorResult.isConfirmed) {
+        // User wants to try again - could recursively call onSubmit
+        console.log("User wants to try again");
+      } else if (errorResult.isDismissed) {
+        // User wants to contact support
+        await Swal.fire({
+          title: "Contact Support",
+          html: `
+          <div class="space-y-4">
+            <p class="text-gray-600">We're here to help! Reach out to us:</p>
+            <div class="flex justify-center space-x-4">
+              <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors">
+                📱 WhatsApp
+              </button>
+              <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                📧 Email
+              </button>
+            </div>
+          </div>
+        `,
+          showConfirmButton: false,
+          showCancelButton: true,
+          cancelButtonText: "Close",
+          allowOutsideClick: true
+        });
+      }
+    }
   };
 
   return (
@@ -140,7 +263,7 @@ export default function ProjectForm({ projectName = "" }) {
                     Select project
                   </option>
                   {projectsData.map((project) => (
-                    <option key={project.id} value={project.title}>
+                    <option key={project.title} value={project.title}>
                       {project.title}
                     </option>
                   ))}
