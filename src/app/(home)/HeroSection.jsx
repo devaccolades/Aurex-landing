@@ -1,3 +1,7 @@
+
+"use client"
+import { useState } from "react";
+
 import React from "react";
 import { projectsData } from "../../data/cardData";
 import Image from "next/image";
@@ -5,8 +9,11 @@ import download from ".././../../public/images/herosection/download.svg";
 import brochure from ".././../../public/images/herosection/up-right.svg";
 import gradient1 from "../../../public/images/herosection/grad1.svg";
 import Button from "@/components/Button";
+import ProjectForm from "@/components/forms/ProjectForm";
+import Modal from "@/components/forms/Modal";
 
 const HeroSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
       <section className="relative bg-transparent text-black pt-8 md:pt-16 pb-12 overflow-hidden">
@@ -120,9 +127,8 @@ const HeroSection = () => {
                 <div className="-mt-10 px-3">
                   <div className="flex gap-1 mb-3">
                     <span
-                      className={`bg-[#006A54] font-[urbanist] text-white text-[14px] leading-[100%] font-semibold ${
-                        project.distance ? "px-3 py-1" : ""
-                      } rounded-full`}
+                      className={`bg-[#006A54] font-[urbanist] text-white text-[14px] leading-[100%] font-semibold ${project.distance ? "px-3 py-1" : ""
+                        } rounded-full`}
                     >
                       {project.distance}
                     </span>
@@ -172,17 +178,24 @@ const HeroSection = () => {
                     </a>
                   )}
                   {project.enquire_now && (
-                    <button className="flex justify-between  flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 font-bold font-[urbanist] text-[12px] md:text-[14px] ">
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="flex justify-between  flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 font-bold font-[urbanist] text-[12px] md:text-[14px] ">
                       Enquire Now
                       <Image src={brochure} alt="brochure" className="flex" />
                     </button>
                   )}
                 </div>
               </div>
+              <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <ProjectForm projectName={project.title} onSuccess={() => setIsModalOpen(false)} />
+              </Modal>
             </div>
+
           ))}
         </div>
       </section>
+
     </>
   );
 };
