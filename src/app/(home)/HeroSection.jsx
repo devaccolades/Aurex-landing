@@ -42,7 +42,7 @@ const HeroSection = () => {
           <Button text={"Book a site visit"} />
         </div>
       </section>
-      <section className="container mx-auto pt-10 overflow-hidden">
+      <section className="pt-10 overflow-hidden">
         <div className="grid lg:grid-cols-2">
           {projectsData.map((project, index) => (
             <div
