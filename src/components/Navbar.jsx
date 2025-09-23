@@ -5,103 +5,87 @@ import Logo1 from '../../public/images/navbar/logo1.svg';
 import Logo2 from '../../public/images/navbar/logo2.svg';
 import Phone from '../../public/images/navbar/phone.svg';
 import Mail from '../../public/images/navbar/mail.svg';
-import gradient from '../../public/images/navbar/grad2.svg'
 
 const Navbar = () => {
   return (
-    <nav className="relative py-4">
-        <Image src={gradient} alt='gradient' className='absolute top-0 left-0' />
-      <div className=" mx-[70px] flex items-center justify-between">
+    <nav className="py-4">
+      <div className="mx-4 md:mx-[70px] flex items-center justify-between">
         {/* Left Side - Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <Image 
               src={Logo1} 
               alt="Aurex Icon" 
-              className="h-[66px] w-[64px] mr-3"
+              className="lg:h-[66px] lg:w-[64px] md:h-[50px] md:w-[48px] h-[40px] w-[38px] mr-1 z-50"
             />
             <Image 
               src={Logo2}
               alt="Aurex Building Life" 
-              className="h-[52px] w-[112px]"
+              className="lg:h-[52px] lg:w-[112px] md:h-[42px] md:w-[90px] h-[32px] w-[70px] z-50"
             />
           </Link>
         </div>
 
-        {/* Center - Navigation Items */}
-        <div className="hidden md:flex items-center space-x-8 text-black font-[inter] font-normal lg:text-[16px] md:text-[14px] text-[12px]">
+        {/* Center - Navigation Items (Hidden on mobile) */}
+        <div className="hidden lg:flex items-center space-x-8 text-black font-[inter] font-normal text-[16px]">
           <Link 
             href="/projects" 
-            className=" "
+            className="hover:text-gray-700 transition-colors"
           >
             Projects
           </Link>
           <Link 
             href="/services" 
-            className=""
+            className="hover:text-gray-700 transition-colors"
           >
             Services
           </Link>
           <Link 
             href="/about" 
-            className=""
+            className="hover:text-gray-700 transition-colors"
           >
             About Us
           </Link>
           <Link 
             href="/contact" 
-            className=""
+            className="hover:text-gray-700 transition-colors"
           >
             Contact Us
           </Link>
         </div>
 
         {/* Right Side - Contact Info */}
-        <div className="space-x-6 text-black">
-          <div className="flex space-x-2">
-            <Image src={Phone} alt='phone' className='size-[16px]' />
-            <div className="text-[14px] leading-[16px] mb-2 font-bold">
-              <div>+91 98445 07474 / 98460 07474</div>
+        <div className="text-black">
+          {/* Desktop Contact Info */}
+          <div className="hidden lg:block space-y-2">
+            <div className="flex items-center space-x-2">
+              <Image src={Phone} alt='phone' className='w-[16px] h-[16px]' />
+              <div className="text-[14px] leading-[16px] font-bold">
+                +91 98445 07474 / 98460 07474
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Image src={Mail} alt='mail' className='w-[16px] h-[16px]' />
+              <div className="text-[14px] font-[urbanist] font-bold">
+                SALES@AUREXBUILDERS.COM
+              </div>
             </div>
           </div>
-          <div className="flex space-x-2">
-            <Image src={Mail} alt='mail' className='size-[16px]' />
-            <div className="text-[14px] font-[urbanist] font-bold">
-              SALES@AUREXBUILDERS.COM
+
+          {/* Mobile Contact Info - Stacked vertically */}
+          <div className="lg:hidden space-y-1">
+            <div className="flex items-center space-x-1">
+              <Image src={Phone} alt='phone' className='w-[12px] h-[12px]' />
+              <div className="text-[10px] font-bold leading-[16px] text-[#000000]">
+                +91 98445 07474 / 98460 07474
+              </div>
             </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button className="text-white">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu (you can add state to toggle this) */}
-      <div className="md:hidden mt-4 pt-4">
-        <div className="flex flex-col space-y-3">
-          <Link href="/projects" className="">
-            Projects
-          </Link>
-          <Link href="/services" className="">
-            Services
-          </Link>
-          <Link href="/about" className="">
-            About Us
-          </Link>
-          <Link href="/contact" className="">
-            Contact Us
-          </Link>
-          
-          {/* Mobile Contact Info */}
-          <div className="pt-3 gap-[10px]">
-            <div className="text-[14px] leading-[16px] mb-2 font-bold">+91 98445 07474 / 98460 07474</div>
-            <div className="text-[14px] font-[urbanist] font-bold">SALES@AUREXBUILDERS.COM</div>
+            <div className="flex items-center space-x-1">
+              <Image src={Mail} alt='mail' className='w-[12px] h-[12px]' />
+              <div className="text-[10px] font-[urbanist] font-bold leading-[16px] text-[#000000]">
+                SALES@AUREXBUILDERS.COM
+              </div>
+            </div>
           </div>
         </div>
       </div>

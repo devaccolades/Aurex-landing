@@ -9,186 +9,176 @@ import Button from "@/components/Button";
 const HeroSection = () => {
   return (
     <>
-      <section className="relative bg-white text-black py-24 sm:py-32 overflow-hidden">
-      {/* Background Gradient */}
-      <div
-        className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-teal-100/40 via-white/0 to-white/0 -translate-x-1/4 -translate-y-1/4"
-        aria-hidden="true"
-      ></div>
+      <section className="relative bg-transparent text-black pt-8 md:pt-16 pb-12 overflow-hidden">
+        <div
+          className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-teal-100/40 via-white/0 to-white/0 -translate-x-1/4 -translate-y-1/4"
+          aria-hidden="true"
+        ></div>
+        <div
+          className="absolute top-1/2 -left-1/4 w-[50rem] h-[50rem] border border-gray-200/80 rounded-full -translate-y-1/2"
+          aria-hidden="true"
+        ></div>
+        <div
+          className="absolute top-1/2 -right-1/4 w-[50rem] h-[50rem] border border-gray-200/80 rounded-full -translate-y-1/2"
+          aria-hidden="true"
+        ></div>
+        <div
+          className="absolute -top-1/4 left-1/2 w-[45rem] h-[45rem] border-t border-gray-200/80 rounded-full -translate-x-1/2"
+          aria-hidden="true"
+        ></div>
 
-      {/* Background Arcs - positioned absolutely and behind the content */}
-      <div
-        className="absolute top-1/2 -left-1/4 w-[50rem] h-[50rem] border border-gray-200/80 rounded-full -translate-y-1/2"
-        aria-hidden="true"
-      ></div>
-      <div
-        className="absolute top-1/2 -right-1/4 w-[50rem] h-[50rem] border border-gray-200/80 rounded-full -translate-y-1/2"
-        aria-hidden="true"
-      ></div>
-      <div
-        className="absolute -top-1/4 left-1/2 w-[45rem] h-[45rem] border-t border-gray-200/80 rounded-full -translate-x-1/2"
-        aria-hidden="true"
-      ></div>
+        <div className="relative z-10 container mx-auto px-4 text-start md:text-center flex flex-col md:items-center font-[urbanist] font-medium text-[76px] leading-[70%] ">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl text-black ">
+            SHAPING TOMORROW
+          </h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl text-black ">
+            DELIVERED TODAY
+          </h1>
 
-
-      {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center font-[urbanist] font-medium text-[76px] leading-[70%] ">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-black tracking-[0.2em]">
-          SHAPING TOMORROW
-        </h1>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-black tracking-[0.2em] mt-2 md:mt-4">
-          DELIVERED TODAY
-        </h1>
-
-        <p className="mt-8 max-w-xl mx-auto text-base md:text-lg text-gray-600 font-[inter] font-normal  ">
-          Turning your ideas into reality through meticulous planning and expert execution.
-        </p>
-        <Button text={"Book a site visit"} />
-      </div>
-    </section>
-    <section className="container mx-auto py-10">
-      {/* Outer Grid - 2 cards per row */}
-      <div className="grid md:grid-cols-2">
-        {projectsData.map((project, index) => (
-          <div
-            key={index}
-            className=" grid grid-cols-1 md:grid-cols-2 bg-white"
-          >
-            {/* Left Side - Image */}
-            <div className="relative">
-              <Image
-                src={project.main_image}
-                alt="Project Building"
-                width={600}
-                height={100}
-                className="w-full h-[500px] object-cover"
-              />
-
-              {/* Status Badge */}
-              <span className="absolute top-4 bg-[#C19A5B] text-white text-xs px-4 py-2 rounded-r-full font-[urbanist] font-normal text-[14px] leading-[100%] ">
-                {project.status}
-              </span>
-
-              {/* Map Icon */}
-              <div className="absolute bottom-4 right-4">
+          <p className="md:mt-4 mt-1 md:mx-auto text-base md:text-lg text-[#000000] font-[inter] font-normal lg:text-[16px] md:text-[14px] text-[12px] leading-[100%] md:mb-4 mb-1 w-[90%] md:w-full ">
+            Turning your ideas into reality through meticulous planning and
+            expert execution.
+          </p>
+          <Button text={"Book a site visit"} />
+        </div>
+      </section>
+      <section className="container mx-auto pt-10 overflow-hidden">
+        <div className="grid lg:grid-cols-2">
+          {projectsData.map((project, index) => (
+            <div
+              key={index}
+              className="grid grid-cols-1 md:grid-cols-2 bg-white min-w-0"
+            >
+              <div className="relative">
                 <Image
-                  src={project.map_icon}
-                  alt="Map Location"
-                  width={44}
-                  height={44}
-                  className="cursor-pointer"
-                />
-              </div>
-            </div>
-
-            {/* Right Side - Details */}
-            <div className="flex flex-col justify-between relative">
-              <Image
-                src={gradient1}
-                alt="gradient1"
-                className="absolute top-0 left-0 z-50"
-              />
-
-              {/* Top Row - Logo + QR + RERA */}
-              <div className="pt-5 px-5 flex items-start justify-between">
-                <Image
-                  src={project.project_logo}
-                  alt="Project Logo"
-                  width={100}
-                  height={40}
-                  className="object-contain"
-                />
-                <div className="text-right flex gap-1">
-                  <Image
-                    src={project.qr_code}
-                    alt="QR Code"
-                    width={34}
-                    height={34}
-                    className="mx-auto mb-1"
-                  />
-                  <p className="font-[urbanist] font-normal text-[10px] leading-[16px] text-[#000000] text-start">
-                    RERA REG. NO
-                    <br />
-                    {project.rera_no}
-                  </p>
-                </div>
-              </div>
-
-              {/* Vector BG */}
-              <div className="">
-                <Image
-                  src={project.vector_image}
-                  alt="Vector Background"
-                  width={500}
+                  src={project.main_image}
+                  alt="Project Building"
+                  width={600}
                   height={100}
-                  className="opacity-70 "
+                  className="w-full h-[350px] md:h-[480px] object-cover"
                 />
-              </div>
 
-              {/* All Details in Single Div */}
-              <div className="-mt-20 px-3 py-1 ">
-                {/* Distance and From */}
-                <div className="flex gap-1 mb-3">
-                  <span
-                    className={`bg-[#006A54] font-[urbanist] text-white text-[14px] leading-[100%] font-semibold ${
-                      project.distance ? "px-3 py-1" : ""
-                    } rounded-full`}
-                  >
-                    {project.distance}
-                  </span>
-                  <span className="font-[urbanist] font-bold text-[16px] text-[#006A54] ">
-                    {project.from}
-                  </span>
-                </div>
+                <span
+                  className={`absolute top-4 text-white text-xs px-4 py-2 rounded-r-full font-[urbanist] font-normal text-[14px] leading-[100%]`}
+                  style={{ backgroundColor: project.status_bg }}
+                >
+                  {project.status}
+                </span>
 
-                {/* Details Grid */}
-                <div className="grid grid-cols-2 gap-4 text-sm mb-3">
-                  <div>
-                    <p className="font-bold text-[14px] leading-[16px] font-[urbanist]">
-                      {project.apartment_type}
-                    </p>
-                    <p className="mt-2 font-[urbanist] font-normal text-[12px] leading-[100%] text-[#000000]">
-                      Location:
-                      <span className="font-bold block font-[urbanist] text-[14px] leading-[16px] text-[#000000]">
-                        {project.location}
-                      </span>
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-[14px] leading-[16px] font-[urbanist] w-[70%]">
-                      Total Units:{" "}
-                      <span className="font-medium">{project.total_units}</span>
-                    </p>
-                    <p className="mt-2 font-[urbanist] font-normal text-[12px] leading-[100%] text-[#000000]">
-                      Total Land Area:{" "}
-                      <span className="block font-bold font-[urbanist] text-[14px] leading-[16px] text-[#000000]">
-                        {project.total_land_area}
-                      </span>
-                    </p>
-                  </div>
+                <div className="absolute bottom-4 right-4">
+                  <Image
+                    src={project.map_icon}
+                    alt="Map Location"
+                    width={44}
+                    height={44}
+                    className="cursor-pointer"
+                  />
                 </div>
               </div>
 
-              {/* Buttons */}
-              <div className="px-3 py-1 flex gap-4">
-                {project.brochure && (
-                  <button className="flex justify-between flex-1 border-[1px] border-[#E9E9E9] rounded-[10px] px-4 py-2 text-sm font-medium ">
-                    Brochure
-                    <Image src={download} alt="download" />
-                  </button>
-                )}
-                {project.enquire_now && (
-                  <button className="flex justify-between  flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 text-sm font-medium ">
-                    Enquire Now
-                    <Image src={brochure} alt="brochure" className="flex" />
-                  </button>
-                )}
+              <div className="flex flex-col justify-between relative pb-4">
+                <Image
+                  src={gradient1}
+                  alt="gradient1"
+                  className="absolute top-0 left-0 z-50"
+                />
+
+                <div className="pt-5 px-5 flex items-start justify-between">
+                  <Image
+                    src={project.project_logo}
+                    alt="Project Logo"
+                    width={100}
+                    height={40}
+                    className="object-contain z-50"
+                  />
+                  <div className="text-right flex gap-1">
+                    <Image
+                      src={project.qr_code}
+                      alt="QR Code"
+                      width={34}
+                      height={34}
+                      className="mx-auto mb-1"
+                    />
+                    <p className="font-[urbanist] font-normal text-[10px] leading-[16px] text-[#000000] text-start">
+                      RERA REG. NO
+                      <br />
+                      {project.rera_no}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="">
+                  <Image
+                    src={project.vector_image}
+                    alt="Vector Background"
+                    width={500}
+                    height={100}
+                    className="w-full h-auto opacity-70"
+                  />
+                </div>
+
+                <div className="-mt-10 px-3">
+                  <div className="flex gap-1 mb-3">
+                    <span
+                      className={`bg-[#006A54] font-[urbanist] text-white text-[14px] leading-[100%] font-semibold ${
+                        project.distance ? "px-3 py-1" : ""
+                      } rounded-full`}
+                    >
+                      {project.distance}
+                    </span>
+                    <span className="font-[urbanist] font-bold text-[16px] text-[#006A54] ">
+                      {project.from}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 text-sm mb-3">
+                    <div>
+                      <p className="font-bold text-[14px] leading-[16px] font-[urbanist] bg-[#EFEFEF] rounded-[8px] p-2 ">
+                        {project.apartment_type}
+                      </p>
+                      <p className="mt-2 font-[urbanist] font-normal text-[12px] leading-[100%] text-[#000000]">
+                        Location:
+                        <span className="font-bold block font-[urbanist] text-[14px] leading-[16px] text-[#000000] mt-2 w-full  max:w-[70%]">
+                          {project.location}
+                        </span>
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-bold text-[14px] leading-[16px] font-[urbanist]  bg-[#EFEFEF] rounded-[8px] p-2">
+                        Total Units:{" "}
+                        <span className="font-medium block">
+                          {project.total_units}
+                        </span>
+                      </p>
+                      <p className="mt-2 font-[urbanist] font-normal text-[12px] leading-[100%] text-[#000000]">
+                        Total Land Area:{" "}
+                        <span className="block font-bold font-[urbanist] text-[14px] leading-[16px] text-[#000000] mt-2">
+                          {project.total_land_area}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="px-3 flex gap-4">
+                  {project.brochure && (
+                    <button className="flex justify-between flex-1 border-[1px] border-[#E9E9E9] rounded-[10px] px-4 py-2 text-sm font-medium ">
+                      Brochure
+                      <Image src={download} alt="download" />
+                    </button>
+                  )}
+                  {project.enquire_now && (
+                    <button className="flex justify-between  flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 text-sm font-medium ">
+                      Enquire Now
+                      <Image src={brochure} alt="brochure" className="flex" />
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
     </>
   );
 };
