@@ -5,12 +5,13 @@ import Logo1 from '../../public/images/navbar/logo1.svg';
 import Logo2 from '../../public/images/navbar/logo2.svg';
 import Phone from '../../public/images/navbar/phone.svg';
 import Mail from '../../public/images/navbar/mail.svg';
+import gradient from '../../public/images/navbar/grad2.svg'
 
 const Navbar = () => {
   return (
-    <nav className="py-4">
-      <div className="mx-[70px] flex items-center justify-between">
-        
+    <nav className="relative py-4">
+        <Image src={gradient} alt='gradient' className='absolute top-0 left-0' />
+      <div className=" mx-[70px] flex items-center justify-between">
         {/* Left Side - Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
