@@ -23,7 +23,7 @@ export default function FloatingButtons() {
 
   return (
     <>
-      <div className=" absolute items-end  right-0 top-1/3 transform -translate-y-1/2 z-50 flex flex-col gap-2">
+      <div className=" absolute items-end  right-0 top-1/3 transform -translate-y-1/2 z-40 flex flex-col gap-2">
         {/* WhatsApp Button with Custom Icon */}
         <button
           onClick={handleWhatsAppClick}
