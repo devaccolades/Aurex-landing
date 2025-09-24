@@ -45,7 +45,7 @@ const Ambassador = () => {
       // Images scale in
       gsap.utils.toArray(".fade-img").forEach((img) => {
         gsap.from(img, {
-          scale: 1.2,
+          scale: 1,
           opacity: 0,
           duration: 1.2,
           ease: "power3.out",
@@ -58,7 +58,7 @@ const Ambassador = () => {
 
       // Name reveal
       gsap.from(".ambassador-name", {
-        x: 100,
+        y: 50,
         opacity: 0,
         duration: 1.2,
         ease: "power3.out",
