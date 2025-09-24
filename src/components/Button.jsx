@@ -10,7 +10,7 @@ const Button = ({ text, className, ...props }) => {
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className={`ml-3 md:ml-0 relative inline-block mt-2 cursor-pointer text-lg font-bold group focus:outline-none ${className}`}
+        className={`mx-auto relative inline-block mt-2 cursor-pointer text-lg font-bold group focus:outline-none ${className}`}
         {...props}
       >
         <span
