@@ -17,7 +17,7 @@ const HeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <section className="bg-[url('/images/herosection/line-bg.svg')] relative  text-black pt-8 md:pt-16 pb-8 md:pb-14 lg:pb-20 overflow-hidden">
+      <section className="bg-[url('/images/herosection/line-bg.svg')] bg-center bg-no-repeat bg-cover w-full h-full relative  text-black pt-8 md:pt-16 pb-8 md:pb-14 lg:pb-20 overflow-hidden">
 
         <div className="relative z-50 container mx-auto px-4 text-start md:text-center flex flex-col md:items-center font-[urbanist] font-medium text-[76px] leading-[70%] ">
           <h1 className="text-4xl sm:text-5xl md:text-6xl text-black ">
