@@ -23,11 +23,11 @@ export default function FloatingButtons() {
 
   return (
     <>
-      <div className=" absolute items-end  right-0 top-1/3 transform -translate-y-1/2 z-40 flex flex-col gap-2">
+      <div className=" fixed items-end  right-0 top-1/4 transform -translate-y-1/2 z-40 flex flex-col gap-2">
         {/* WhatsApp Button with Custom Icon */}
         <button
           onClick={handleWhatsAppClick}
-          className="bg-[#006A54] hover:bg-green-800 text-white p-2 rounded-tl-xl rounded-bl-xl shadow-lg transition-all duration-300 hover:scale-110 group relative"
+          className=" bg-[#006A54] hover:bg-green-800 text-white p-2 rounded-tl-xl rounded-bl-xl shadow-lg transition-all duration-300 hover:scale-110 group relative"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
