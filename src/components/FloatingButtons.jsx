@@ -23,11 +23,11 @@ export default function FloatingButtons() {
 
   return (
     <>
-      <div className="fixed -right-3 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-2">
+      <div className=" absolute items-end  right-0 top-1/3 transform -translate-y-1/2 z-40 flex flex-col gap-2">
         {/* WhatsApp Button with Custom Icon */}
         <button
           onClick={handleWhatsAppClick}
-          className="bg-[#006A54] hover:bg-green-800 text-white p-4 rounded-[12px] shadow-lg transition-all duration-300 hover:scale-110 group relative"
+          className="bg-[#006A54] hover:bg-green-800 text-white p-2 rounded-tl-xl rounded-bl-xl shadow-lg transition-all duration-300 hover:scale-110 group relative"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -48,12 +48,24 @@ export default function FloatingButtons() {
         <div className="relative">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#C19A5D] hover:bg-amber-700 transform rotate-180   text-white px-3 py-4 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 group writing-vertical"
+            className="bg-[#C19A5D] hover:bg-amber-700 transform rotate-180   text-white px-4 py-2 rounded-tr-xl rounded-br-xl shadow-lg transition-all duration-300 hover:scale-105 group writing-vertical"
             style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}
           >
-            <span style={{ marginLeft: "15px", display: "inline-block" }}
-            className="text-[13px] md:text-[20px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold  tracking-wider">
+            <span 
+            className="custom-margin  text-[13px] md:text-[16px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold  tracking-wider">
               Enquire Now
+              <style jsx>{`
+    // .custom-margin {
+    //   margin-left: 10px;
+    //   display: inline-block;
+    // }
+
+    // @media (min-width: 768px) {
+    //   .custom-margin {
+    //     margin-left: 15px;
+    //   }
+    // }
+  `}</style>
             </span>
             {/* Tooltip */}
             {/* <span className="absolute right-16 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
