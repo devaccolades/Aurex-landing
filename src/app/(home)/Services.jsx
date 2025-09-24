@@ -110,7 +110,7 @@ export default function Services() {
         style={{ backgroundImage: "url('/images/services/Rectangle 474.svg')" }}
       >
         {/* Background elements */}
-        <div className="absolute h-full xl:h-full flex items-center -mt-16 xl:-mt-16">
+        <div className="absolute mx-0 lg:mx-50 h-full xl:h-full flex justify-center items-center -mt-16">
           <Image alt="bg" src={cl} height={100} className="h-full w-auto object-cover" />
         </div>
 
