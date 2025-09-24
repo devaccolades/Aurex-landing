@@ -8,7 +8,6 @@ import { projectFormSchema } from "@/lib/validationSchemas";
 import { projectsData } from "@/data/cardData";
 import Swal from "sweetalert2";
 
-
 export default function ProjectForm({ onSuccess, projectName = "" }) {
   const {
     register,
@@ -31,15 +30,15 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
     try {
       // 🎨 Show loading animation while submitting
       Swal.fire({
-        title: 'Sending enquiry...',
-        text: 'Please wait while we process your enquiry',
-        icon: 'info',
+        title: "Sending enquiry...",
+        text: "Please wait while we process your enquiry",
+        icon: "info",
         allowOutsideClick: false,
         allowEscapeKey: false,
         showConfirmButton: false,
         didOpen: () => {
           Swal.showLoading();
-        }
+        },
       });
 
       // Simulate API call
@@ -67,37 +66,48 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
         customClass: {
           popup: "animate__animated animate__bounceIn",
           confirmButton: "px-6 py-2 rounded-lg font-medium",
-          cancelButton: "px-6 py-2 rounded-lg font-medium"
+          cancelButton: "px-6 py-2 rounded-lg font-medium",
         },
         showClass: {
-          popup: 'animate__animated animate__fadeInDown'
+          popup: "animate__animated animate__fadeInDown",
         },
         hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
+          popup: "animate__animated animate__fadeOutUp",
+        },
       });
 
       // Handle user choice
       if (result.isConfirmed) {
         // User clicked "Great!"
         if (onSuccess) onSuccess();
-      } else if (result.isDismissed && result.dismiss === Swal.DismissReason.cancel) {
-        // User clicked "View Summary" 
+      } else if (
+        result.isDismissed &&
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        // User clicked "View Summary"
         await Swal.fire({
           title: "📋 Enquiry Summary",
           html: `
           <div class="text-left space-y-3">
             <div class="bg-blue-50 p-3 rounded-lg border border-blue-200">
-              <p class="text-sm font-medium text-blue-800">👤 Name: ${data.name}</p>
+              <p class="text-sm font-medium text-blue-800">👤 Name: ${
+                data.name
+              }</p>
             </div>
             <div class="bg-green-50 p-3 rounded-lg border border-green-200">
-              <p class="text-sm font-medium text-green-800">📧 Email: ${data.email}</p>
+              <p class="text-sm font-medium text-green-800">📧 Email: ${
+                data.email
+              }</p>
             </div>
             <div class="bg-purple-50 p-3 rounded-lg border border-purple-200">
-              <p class="text-sm font-medium text-purple-800">💬 WhatsApp: ${data.whatsapp}</p>
+              <p class="text-sm font-medium text-purple-800">💬 WhatsApp: ${
+                data.whatsapp
+              }</p>
             </div>
             <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
-              <p class="text-sm font-medium text-gray-800">💭 project: ${data.project || 'Not specified'}</p>
+              <p class="text-sm font-medium text-gray-800">💭 project: ${
+                data.project || "Not specified"
+              }</p>
             </div>
             <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-200 mt-4">
               <p class="text-xs text-yellow-700">🕐 We'll get back to you within 24 hours!</p>
@@ -106,13 +116,12 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
         `,
           icon: "info",
           confirmButtonText: "Perfect!",
-          confirmButtonColor: "#3B82F6"
+          confirmButtonColor: "#3B82F6",
         });
 
         // Close modal after summary view
         if (onSuccess) onSuccess();
       }
-
     } catch (error) {
       console.error(error);
 
@@ -126,10 +135,13 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
         cancelButtonText: "Contact Support",
         confirmButtonColor: "#EF4444",
         cancelButtonColor: "#6B7280",
-        footer: '<small class="text-gray-500">Error occurred at: ' + new Date().toLocaleTimeString() + '</small>',
+        footer:
+          '<small class="text-gray-500">Error occurred at: ' +
+          new Date().toLocaleTimeString() +
+          "</small>",
         customClass: {
-          popup: "animate__animated animate__shakeX"
-        }
+          popup: "animate__animated animate__shakeX",
+        },
       });
 
       if (errorResult.isConfirmed) {
@@ -155,16 +167,16 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
           showConfirmButton: false,
           showCancelButton: true,
           cancelButtonText: "Close",
-          allowOutsideClick: true
+          allowOutsideClick: true,
         });
       }
     }
   };
 
   return (
-    <div className="max-w-md md:max-w-3xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
+    <div className="w-[98%] md:max-w-3xl mx-auto bg-white  rounded-2xl overflow-hidden">
       {/* Top image */}
-      <div className="relative w-full h-64">
+      <div className="relative w-full h-[150px] md:h-64">
         <Image
           src="/images/forms/formbg.webp"
           alt="Family"
@@ -172,10 +184,11 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
           className="object-cover"
           priority
         />
+        <div className="absolute bottom-0 left-0 w-full h-[20%] bg-gradient-to-t from-white to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-0 md:p-4">
         <h2 className="text-center text-[20px] leading-[20px] font-semibold mb-6 font-[urbanist]">
           WE ARE READY TO ANSWER <br className="hidden md:block" />
           ALL YOUR QUESTIONS
@@ -185,7 +198,10 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
           {/* Name & WhatsApp */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1" htmlFor="name">
+              <label
+                className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
+                htmlFor="name"
+              >
                 Name
               </label>
               <input
@@ -193,14 +209,22 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
                 id="name"
                 placeholder="Enter your name"
                 {...register("name")}
-                className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.name ? "border-red-500" : "border-[#BABABA]"
-                  }`}
+                className={`w-full border rounded-lg px-3 py-2 focus:outline-none   font-[urbanist] ${
+                  errors.name ? "border-red-500" : "border-[#BABABA]"
+                }`}
               />
-              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
             <div>
-              <label className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1" htmlFor="whatsapp">
+              <label
+                className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
+                htmlFor="whatsapp"
+              >
                 WhatsApp No
               </label>
               <input
@@ -208,16 +232,24 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
                 id="whatsapp"
                 placeholder="Enter WhatsApp Number"
                 {...register("whatsapp")}
-                className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.whatsapp ? "border-red-500" : "border-[#BABABA]"
-                  }`}
+                className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${
+                  errors.whatsapp ? "border-red-500" : "border-[#BABABA]"
+                }`}
               />
-              {errors.whatsapp && <p className="text-red-500 text-xs mt-1">{errors.whatsapp.message}</p>}
+              {errors.whatsapp && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.whatsapp.message}
+                </p>
+              )}
             </div>
           </div>
 
           {/* Email */}
           <div>
-            <label className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1" htmlFor="email">
+            <label
+              className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -225,14 +257,19 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
               id="email"
               placeholder="Enter Email address"
               {...register("email")}
-              className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.email ? "border-red-500" : "border-[#BABABA]"
-                }`}
+              className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${
+                errors.email ? "border-red-500" : "border-[#BABABA]"
+              }`}
             />
-            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           {/* Project + Submit */}
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 items-end">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 items-center">
             <div>
               <label
                 className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
@@ -256,8 +293,11 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
                 <select
                   id="project"
                   {...register("project")}
-                  className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.project ? "border-red-500 text-black" : "border-[#BABABA] text-black"
-                    }`}
+                  className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] cursor-pointer ${
+                    errors.project
+                      ? "border-red-500 text-black"
+                      : "border-[#BABABA] text-black"
+                  }`}
                 >
                   <option value="" disabled hidden>
                     Select project
@@ -271,15 +311,19 @@ export default function ProjectForm({ onSuccess, projectName = "" }) {
               )}
 
               {errors.project && (
-                <p className="text-red-500 text-xs mt-1">{errors.project.message}</p>
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.project.message}
+                </p>
               )}
             </div>
-
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] md:mt-5 disabled:opacity-50"
+              // className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] disabled:opacity-50 cursor-pointer"
+              className={`bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] disabled:opacity-50 cursor-pointer ${
+                errors.project ? "mt-[-6px]" : "mt-[14px]"
+              }`}
             >
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
