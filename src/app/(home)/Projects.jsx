@@ -6,11 +6,10 @@ import Image from "next/image";
 import download from ".././../../public/images/herosection/download.svg";
 import brochure from ".././../../public/images/herosection/up-right.svg";
 import gradient1 from "../../../public/images/herosection/grad1.svg";
-import ProjectForm from "@/components/forms/ProjectForm";
+import MapForm from "@/components/forms/MapForm";
 import Modal from "@/components/forms/Modal";
 
 export default function Projects() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
 
   return (
@@ -38,7 +37,7 @@ export default function Projects() {
               </span>
 
               <div className="absolute bottom-4 right-4">
-                <button onClick={() => setIsModalOpen(true)}>
+                <button onClick={() => setIsMapModalOpen(true)}>
                   <Image
                     src={project.map_icon}
                     alt="Map Location"
@@ -147,7 +146,7 @@ export default function Projects() {
                 )}
                 {project.enquire_now && (
                   <button
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={() => setIsMapModalOpen(true)}
                     className="flex justify-between  flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 font-bold font-[urbanist] text-[12px] md:text-[14px] "
                   >
                     Enquire Now
@@ -156,10 +155,10 @@ export default function Projects() {
                 )}
               </div>
             </div>
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-              <ProjectForm
+            <Modal isOpen={isMapModalOpen} onClose={() => setIsMapModalOpen(false)}>
+              <MapForm
                 projectName={project.title}
-                onSuccess={() => setIsModalOpen(false)}
+                onSuccess={() => setIsMapModalOpen(false)}
               />
             </Modal>
           </div>
