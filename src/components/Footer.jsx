@@ -8,11 +8,11 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <Image src="/images/footer/logo.png" alt="Aurex Builders" width={60} height={60} />
-            <h3 className="text-sm font-bold uppercase leading-5">
+            <h3 className="font-bold font-[urbanist] text-[16px] leading-[16px] uppercase ">
               Manifesting Your Dream <br /> Into A Magnificent Reality
             </h3>
           </div>
-          <p className="mt-4 text-[14px] leading-6 max-w-md">
+          <p className="mt-4 font-normal font-[inter] text-[16px] leading-[16px] max-w-md">
             Aurex Builders ensures to fulfill the dream of our customers by
             gifting them with quality home spaces, contemporary architecture,
             environment-friendly designs, timely delivery, after-sales service
@@ -22,33 +22,28 @@ export default function Footer() {
 
         {/* Right column */}
         <div>
-          <h4 className="text-sm font-bold mb-3 uppercase">Our Banking Partners</h4>
+          <h4 className="font-bold font-[urbanist] text-[16px] leading-[16px] mb-3 uppercase">Our Banking Partners</h4>
           {/* Bank logos */}
-          <div className="grid grid-cols-5 gap-2 mb-6">
-            <Image src="/images/footer/axis.svg" alt="Axis Bank" width={90} height={90} />
-            <Image src="/images/footer/icici.svg" alt="ICICI Bank" width={90} height={90} />
-            <Image src="/images/footer/canara.svg" alt="Canara Bank" width={90} height={90} />
-            <Image src="/images/footer/cub.svg" alt="CUB" width={90} height={90} />
-            <Image src="/images/footer/sbi.svg" alt="SBI" width={90} height={90} />
-            <Image src="/images/footer/lic.svg" alt="LIC HFL" width={90} height={90} />
-            <Image src="/images/footer/bob.svg" alt="Bank of Baroda" width={90} height={90} />
-            <Image src="/images/footer/hdfc.svg" alt="HDFC Bank" width={90} height={90} />
+          <div className="grid grid-cols-1 gap-2 mb-6">
+            <Image src="/images/footer/bank.svg" alt="Axis Bank" width={500} height={500} />
           </div>
 
 
           {/* Address */}
           {/* Two column layout */}
-          <div className="flex justify-between items-start text-sm">
+          <div className="flex justify-between items-start font-bold font-[urbanist] text-[14px] leading-[14px] lg:text-[16px] lg:leading-[16px]">
             {/* Left side - Address */}
-            <div className="font-semibold leading-5">
-              AUREX BUILDERS PVT LTD.<br />
-              AURUM COMPLEX,<br />
-              PATTURAIKKAL, THRISSUR,<br />
-              KERALA - 680 020
+            <div className=" whitespace-pre-line">
+              {`AUREX BUILDERS PVT LTD.
+                AURUM COMPLEX,
+                PATTURAIKKAL, THRISSUR,
+                KERALA - 680 020`
+              }
             </div>
 
+
             {/* Right side - Contact info */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 font-bold font-[urbanist] text-[14px] leading-[14px] lg:text-[16px] lg:leading-[16px]">
               {/* Email */}
               <div className="flex items-center gap-2">
                 <Image src="/images/footer/mail.png" alt="Email" width={18} height={18} />
@@ -74,8 +69,8 @@ export default function Footer() {
 
       {/* Bottom copyright line */}
       <div >
-        <div className="containers mx-auto py-4 text-xs text-gray-500">
-          © 2025 <span className="font-semibold">AUREX Builders</span> All Rights Reserved
+        <div className="containers mx-auto py-4 font-normal font-[inter] text-[12px] leading-[12px] text-[#000000]">
+          Copyright © 2025 <span className="font-semibold text-[#A8731C]">AUREX Builders</span> All Rights Reserved
         </div>
       </div>
     </footer>
