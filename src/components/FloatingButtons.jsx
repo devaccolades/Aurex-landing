@@ -52,20 +52,9 @@ export default function FloatingButtons() {
             style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}
           >
             <span 
-            className="custom-margin  text-[13px] md:text-[16px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold  tracking-wider">
+            className="  text-[13px] md:text-[16px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold  tracking-wider">
               Enquire Now
-              <style jsx>{`
-    // .custom-margin {
-    //   margin-left: 10px;
-    //   display: inline-block;
-    // }
-
-    // @media (min-width: 768px) {
-    //   .custom-margin {
-    //     margin-left: 15px;
-    //   }
-    // }
-  `}</style>
+             
             </span>
             {/* Tooltip */}
             {/* <span className="absolute right-16 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
