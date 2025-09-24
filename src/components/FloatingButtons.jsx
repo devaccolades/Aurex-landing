@@ -51,7 +51,8 @@ export default function FloatingButtons() {
             className="bg-[#C19A5D] hover:bg-amber-700 transform rotate-180   text-white px-3 py-4 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 group writing-vertical"
             style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}
           >
-            <span className="text-[13px] md:text-[20px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold tracking-wider">
+            <span style={{ marginLeft: "15px", display: "inline-block" }}
+            className="text-[13px] md:text-[20px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold  tracking-wider">
               Enquire Now
             </span>
             {/* Tooltip */}
