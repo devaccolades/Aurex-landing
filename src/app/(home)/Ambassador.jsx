@@ -91,7 +91,7 @@ const Ambassador = () => {
               style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
             ></div>
           </div>
-          <div className="relative h-[200px] mx-[8px] my-[18px] font-[urbanist] font-medium tracking-normal text-[32px] leading-[32px]  text-left text-[#000000] uppercase z-50">
+          <div className="relative h-[200px] mx-[8px] my-[18px] font-[urbanist] font-medium tracking-normal text-[32px] leading-[32px]  text-left text-[#000000] uppercase z-40">
             <h1 id="title" className="opacity-100">
               Manifesting your dream into a Magnificent reality
             </h1>
@@ -109,7 +109,7 @@ const Ambassador = () => {
               style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
             ></div>
           </div>
-          <div className="relative z-50 h-[325px] my-[8px] mx-[8px]">
+          <div className="relative z-40 h-[325px] my-[8px] mx-[8px]">
             <p
               className="fade-text font-[inter] font-normal text-[14px] leading-[156%] tracking-normal"
               style={{ color: "rgba(52, 52, 46, 1)" }}
