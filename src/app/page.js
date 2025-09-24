@@ -7,6 +7,7 @@ import Map from "./(home)/Map";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import gradientBg from "../../public/images/navbar/grad2.svg"; // adjust path
+import Projects from "./(home)/Projects";
 
 export default function Home() {
   return (
@@ -20,10 +21,11 @@ export default function Home() {
           className=""
         />
       </div>
-
-      {/* Content */}
+      <div className="relative bg-[url('/images/herosection/line-bg.svg')] bg-cover bg-no-repeat bg-bottom w-full">
       <Navbar />
       <HeroSection />
+      </div>
+      <Projects />
       <Ambassador />
       <Services />
       <WhyChoose />
