@@ -41,7 +41,7 @@ const Navbar = () => {
             Services
           </Link>
           <Link 
-            href="#about" 
+            href="#about-us" 
             className="hover:text-[#006A54] transition-colors duration-200"
           >
             About Us
@@ -58,20 +58,29 @@ const Navbar = () => {
         <div className="text-black">
           {/* Desktop Contact Info */}
           <div className="hidden lg:block space-y-2">
-            {/* Phone Number - Clickable */}
-            <a 
-              href="tel:+919844507474" 
-              className="flex items-center space-x-2 hover:text-[#006A54] transition-colors duration-200 cursor-pointer group"
-            >
+            {/* Phone Numbers - Separate links */}
+            <div className="flex items-center space-x-2">
               <Image 
                 src={Phone} 
                 alt='phone' 
-                className='w-[16px] h-[16px] group-hover:scale-110 transition-transform duration-200' 
+                className='w-[16px] h-[16px]' 
               />
-              <div className="text-[14px] leading-[16px] font-bold">
-                +91 98445 07474 / 98460 07474
+              <div className="text-[14px] leading-[16px] font-bold flex items-center space-x-1">
+                <a 
+                  href="tel:+919844507474" 
+                  className="hover:text-[#006A54] transition-colors duration-200 cursor-pointer"
+                >
+                  +91 98445 07474
+                </a>
+                <span>/</span>
+                <a 
+                  href="tel:+919846007474" 
+                  className="hover:text-[#006A54] transition-colors duration-200 cursor-pointer"
+                >
+                  98460 07474
+                </a>
               </div>
-            </a>
+            </div>
             
             {/* Email - Clickable */}
             <a 
@@ -91,16 +100,25 @@ const Navbar = () => {
 
           {/* Mobile Contact Info - Stacked vertically */}
           <div className="lg:hidden space-y-1">
-            {/* Phone Number - Mobile */}
-            <a 
-              href="tel:+919844507474" 
-              className="flex items-center space-x-1 hover:text-[#006A54] transition-colors duration-200 cursor-pointer active:scale-95"
-            >
+            {/* Phone Numbers - Mobile */}
+            <div className="flex items-center space-x-1">
               <Image src={Phone} alt='phone' className='w-[12px] h-[12px]' />
-              <div className="text-[10px] font-bold leading-[16px] text-[#000000]">
-                +91 98445 07474 / 98460 07474
+              <div className="text-[10px] font-bold leading-[16px] text-[#000000] flex items-center space-x-1">
+                <a 
+                  href="tel:+919844507474" 
+                  className="hover:text-[#006A54] transition-colors duration-200 cursor-pointer active:scale-95"
+                >
+                  +91 98445 07474
+                </a>
+                <span>/</span>
+                <a 
+                  href="tel:+919846007474" 
+                  className="hover:text-[#006A54] transition-colors duration-200 cursor-pointer active:scale-95"
+                >
+                  98460 07474
+                </a>
               </div>
-            </a>
+            </div>
             
             {/* Email - Mobile */}
             <a 

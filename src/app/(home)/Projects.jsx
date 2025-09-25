@@ -133,7 +133,7 @@ export default function Projects() {
                   <div>
                     <p className="font-bold text-[14px] bg-[#EFEFEF] rounded-[8px] p-2 font-[urbanist] leading-[16px]">
                       Total Units:{" "}
-                      <span className="font-medium block font-[urbanist]">
+                      <span className="block font-[urbanist] font-bold">
                         {project.total_units}
                       </span>
                     </p>
