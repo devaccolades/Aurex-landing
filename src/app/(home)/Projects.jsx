@@ -68,13 +68,13 @@ export default function Projects() {
               />
 
               {/* Logo + RERA */}
-              <div className="pt-5 px-5 flex items-start justify-between">
+              <div className="pt-5 px-3 flex items-start justify-between">
                 <Image
                   src={project.project_logo}
                   alt="Project Logo"
                   width={100}
                   height={40}
-                  className="object-contain z-40"
+                  className="object-contain z-40 xl:w-[100px] lg:h-[40px] lg:w-[80px] h-[35px] w-[80px] "
                 />
                 <div className="text-right flex gap-1">
                   <Image
@@ -82,7 +82,7 @@ export default function Projects() {
                     alt="QR Code"
                     width={34}
                     height={34}
-                    className="mx-auto mb-1"
+                    className="m-auto mb-1 lg:size-[30px] xl:size-[34px] md:size-[28px] size-[24px]"
                   />
                   <p className="font-[urbanist] font-normal text-[10px] leading-[16px] text-[#000000] text-start">
                     RERA REG. NO
