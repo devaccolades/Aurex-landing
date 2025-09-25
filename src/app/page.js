@@ -21,7 +21,7 @@ export default function Home() {
           className=""
         />
       </div>
-      <div className="relative bg-[url('/images/herosection/line-bg.svg')] bg-cover bg-no-repeat bg-bottom w-full">
+      <div className="relative bg-[url('/images/herosection/line-bg.webp')] bg-cover bg-no-repeat bg-bottom w-full">
       <Navbar />
       <HeroSection />
       </div>
