@@ -92,7 +92,7 @@ const Ambassador = () => {
             ></div>
           </div>
           <div className="relative h-[200px] mx-[8px] my-[18px] font-[urbanist] font-medium tracking-normal text-[32px] leading-[32px]  text-left text-[#000000] uppercase z-40">
-            <h1 id="title" className="opacity-100">
+            <h1 id="" className="opacity-100">
               Manifesting your dream into a Magnificent reality
             </h1>
           </div>
@@ -169,7 +169,7 @@ const Ambassador = () => {
               style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
             ></div>
           </div>
-          <div className="h-[349px] flex flex-col justify-between">
+          <div className="h-[349px] flex flex-col justify-center gap-4">
             <p
               className="fade-text ml-[13px] mt-[24px] font-[urbanist] text-[16px] leading-[16px] tracking-normal font-medium
            uppercase max-w-48"
@@ -319,7 +319,7 @@ const Ambassador = () => {
               className="fade-img h-full object-cover w-full opacity-10 "
             />
           </div>
-          <div className="w-[50%] h-full flex flex-col justify-around ">
+          <div className="w-[50%] h-full flex flex-col justify-center gap-8 ">
             <p className="fade-text md:ml-[10px] xl:ml-[37px] font-[urbanist] xl:text-[24px] xl:leading-[24px] xl:tracking-normal font-medium uppercase max-w-64">
               We are pleased to introduce our brand ambassador.
             </p>
