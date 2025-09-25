@@ -8,7 +8,7 @@ import Mail from '../../public/images/navbar/mail.svg';
 
 const Navbar = () => {
   return (
-    <nav className="py-4 border-b-[0.5px] border-gray-300">
+    <nav className="py-4 border-b-[0.5px] border-[rgba(168,168,168,0.3)]">
       <div className="mx-4 md:mx-[70px] flex items-center justify-between">
         {/* Left Side - Logo */}
         <div className="flex items-center">
