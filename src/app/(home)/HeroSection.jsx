@@ -10,10 +10,10 @@ const HeroSection = () => {
       <section className=" relative  text-black pt-8 md:pt-16 pb-8 md:pb-14 lg:pb-20 overflow-hidden">
 
         <div className="relative z-50 container mx-auto px-4 text-start md:text-center flex flex-col md:items-center font-[urbanist] font-medium text-[76px] ">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl text-black md:leading-[70px] leading-[36px] ">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl text-black md:leading-[100%] leading-[36px] ">
             SHAPING TOMORROW
           </h1>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl text-black md:leading-[70px] leading-[36px] ">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl text-black md:leading-[100%] leading-[36px] ">
             DELIVERED TODAY
           </h1>
 

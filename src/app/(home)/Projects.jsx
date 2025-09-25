@@ -1,25 +1,28 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { projectsData } from "../../data/cardData";
 import Image from "next/image";
-import download from ".././../../public/images/herosection/download.svg";
-import brochure from ".././../../public/images/herosection/up-right.svg";
-import gradient1 from "../../../public/images/herosection/grad1.svg";
+import download from "../../../public/images/herosection/download.svg";
+import brochure from "../../../public/images/herosection/up-right.svg";
+import gradient1 from "../../../public/images/herosection/grad1.webp";
 import MapForm from "@/components/forms/MapForm";
+import ProjectForm from "@/components/forms/ProjectForm"; // Import your ProjectForm
 import Modal from "@/components/forms/Modal";
 
 export default function Projects() {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [activeProject, setActiveProject] = useState(null);
 
   return (
-    <section id="Projects" className=" overflow-hidden">
+    <section id="Projects" className="overflow-hidden">
       <div className="grid lg:grid-cols-2">
         {projectsData.map((project, index) => (
           <div
             key={index}
             className="grid grid-cols-1 md:grid-cols-2 bg-white min-w-0"
           >
+            {/* Left side image */}
             <div className="relative">
               <Image
                 src={project.main_image}
@@ -29,15 +32,22 @@ export default function Projects() {
                 className="w-full h-full object-cover"
               />
 
+              {/* Status badge */}
               <span
-                className={`absolute top-4 text-white text-xs px-4 py-2 rounded-r-full font-[urbanist] font-normal text-[14px] leading-[100%]`}
+                className={`absolute top-4 text-white text-xs px-4 py-2 rounded-r-full font-[urbanist] font-normal text-[14px]`}
                 style={{ backgroundColor: project.status_bg }}
               >
                 {project.status}
               </span>
 
+              {/* Map button */}
               <div className="absolute bottom-4 right-4">
-                <button onClick={() => setIsMapModalOpen(true)}>
+                <button
+                  onClick={() => {
+                    setActiveProject(project);
+                    setIsMapModalOpen(true);
+                  }}
+                >
                   <Image
                     src={project.map_icon}
                     alt="Map Location"
@@ -49,6 +59,7 @@ export default function Projects() {
               </div>
             </div>
 
+            {/* Right side details */}
             <div className="flex flex-col justify-between relative pb-4">
               <Image
                 src={gradient1}
@@ -56,6 +67,7 @@ export default function Projects() {
                 className="absolute top-0 left-0 z-40"
               />
 
+              {/* Logo + RERA */}
               <div className="pt-5 px-5 flex items-start justify-between">
                 <Image
                   src={project.project_logo}
@@ -80,7 +92,8 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="">
+              {/* Vector */}
+              <div>
                 <Image
                   src={project.vector_image}
                   alt="Vector Background"
@@ -90,6 +103,7 @@ export default function Projects() {
                 />
               </div>
 
+              {/* Details */}
               <div className="-mt-10 px-3">
                 <div className="flex gap-1 mb-3">
                   <span
@@ -99,33 +113,33 @@ export default function Projects() {
                   >
                     {project.distance}
                   </span>
-                  <span className="font-[urbanist] font-bold text-[16px] text-[#006A54] ">
+                  <span className="font-[urbanist] font-bold text-[16px] text-[#006A54]">
                     {project.from}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 text-sm mb-3">
                   <div>
-                    <p className="font-bold text-[14px] leading-[16px] font-[urbanist] bg-[#EFEFEF] rounded-[8px] p-2 ">
+                    <p className="font-bold text-[14px] bg-[#EFEFEF] rounded-[8px] p-2">
                       {project.apartment_type}
                     </p>
-                    <p className="mt-2 font-[urbanist] font-normal text-[12px] leading-[100%] text-[#000000]">
+                    <p className="mt-2 font-[urbanist] text-[12px]">
                       Location:
-                      <span className="font-bold block font-[urbanist] text-[14px] leading-[16px] text-[#000000] mt-2 w-full  max:w-[70%]">
+                      <span className="font-bold block text-[14px] mt-2">
                         {project.location}
                       </span>
                     </p>
                   </div>
                   <div>
-                    <p className="font-bold text-[14px] leading-[16px] font-[urbanist]  bg-[#EFEFEF] rounded-[8px] p-2">
+                    <p className="font-bold text-[14px] bg-[#EFEFEF] rounded-[8px] p-2">
                       Total Units:{" "}
                       <span className="font-medium block">
                         {project.total_units}
                       </span>
                     </p>
-                    <p className="mt-2 font-[urbanist] font-normal text-[12px] leading-[100%] text-[#000000]">
+                    <p className="mt-2 font-[urbanist] text-[12px]">
                       Total Land Area:{" "}
-                      <span className="block font-bold font-[urbanist] text-[14px] leading-[16px] text-[#000000] mt-2">
+                      <span className="block font-bold text-[14px] mt-2">
                         {project.total_land_area}
                       </span>
                     </p>
@@ -133,6 +147,7 @@ export default function Projects() {
                 </div>
               </div>
 
+              {/* Buttons */}
               <div className="px-3 flex gap-4">
                 {project.brochure && (
                   <a
@@ -146,24 +161,46 @@ export default function Projects() {
                 )}
                 {project.enquire_now && (
                   <button
-                    onClick={() => setIsMapModalOpen(true)}
-                    className="flex justify-between  flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 font-bold font-[urbanist] text-[12px] md:text-[14px] "
+                    onClick={() => {
+                      setActiveProject(project);
+                      setIsFormModalOpen(true);
+                    }}
+                    className="flex justify-between flex-1 bg-[#006A54] text-white rounded-[10px] px-4 py-2 font-bold font-[urbanist] text-[12px] md:text-[14px]"
                   >
                     Enquire Now
-                    <Image src={brochure} alt="brochure" className="flex" />
+                    <Image src={brochure} alt="brochure" />
                   </button>
                 )}
               </div>
             </div>
-            <Modal isOpen={isMapModalOpen} onClose={() => setIsMapModalOpen(false)}>
-              <MapForm
-                projectName={project.title}
-                onSuccess={() => setIsMapModalOpen(false)}
-              />
-            </Modal>
           </div>
         ))}
       </div>
+
+      {/* Map Modal */}
+      <Modal isOpen={isMapModalOpen} onClose={() => setIsMapModalOpen(false)}>
+        {activeProject && (
+          <MapForm
+            projectName={activeProject.title}
+            onSuccess={() => setIsMapModalOpen(false)}
+            mapUrl={activeProject.map_iframe}
+          />
+        )}
+      </Modal>
+
+      {/* Enquiry Form Modal - Now using ProjectForm */}
+      <Modal
+        isOpen={isFormModalOpen}
+        onClose={() => setIsFormModalOpen(false)}
+      >
+        {activeProject && (
+          <ProjectForm
+            projectName={activeProject.title}
+            projectData={activeProject}
+            onSuccess={() => setIsFormModalOpen(false)}
+          />
+        )}
+      </Modal>
     </section>
   );
 }
