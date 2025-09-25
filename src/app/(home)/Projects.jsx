@@ -104,8 +104,8 @@ export default function Projects() {
               </div>
 
               {/* Details */}
-              <div className="-mt-10 px-3">
-                <div className="flex gap-1 mb-3">
+              <div className="-mt-10 px-3 uppercase">
+                <div className="flex gap-1 mb-3 capitalize">
                   <span
                     className={`bg-[#006A54] font-[urbanist] text-white text-[14px] leading-[100%] font-semibold ${
                       project.distance ? "px-3 py-1" : ""
@@ -148,7 +148,7 @@ export default function Projects() {
               </div>
 
               {/* Buttons */}
-              <div className="px-3 flex gap-4">
+              <div className="px-3 flex gap-4 uppercase">
                 {project.brochure && (
                   <a
                     href={project.brochure}
@@ -165,7 +165,7 @@ export default function Projects() {
                       setActiveProject(project);
                       setIsFormModalOpen(true);
                     }}
-                    className="flex justify-between flex-1 bg-[#006A54] text-white rounded-[10px] px-3 xl:px-4 xl:py-2 py-1 font-bold font-[urbanist] text-[12px] md:text-[14px]"
+                    className="flex justify-between items-center flex-1 bg-[#006A54] text-white rounded-[10px] px-3 xl:px-4 xl:py-2 py-1 font-bold font-[urbanist] text-[12px] md:text-[14px] uppercase"
                   >
                     Enquire Now
                     <Image src={brochure} alt="brochure" />

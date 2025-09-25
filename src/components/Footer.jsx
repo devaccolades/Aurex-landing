@@ -47,7 +47,7 @@ export default function Footer() {
               {/* Email */}
               <div className="flex items-center gap-2">
                 <Image src="/images/footer/mail.png" alt="Email" width={18} height={18} />
-                <a href="mailto:sales@aurexbuilders.com" className="text-orange-500">
+                <a href="mailto:sales@aurexbuilders.com" className="text-orange-500 mb-1">
                   sales@aurexbuilders.com
                 </a>
               </div>
@@ -56,7 +56,7 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <Image src="/images/footer/phone.png" alt="Phone" width={18} height={18} />
                 <div className="flex flex-col">
-                  <span>+91 98465 07474</span>
+                  <span className="mb-1">+91 98465 07474</span>
                   <span>+91 98460 07474</span>
                 </div>
               </div>
