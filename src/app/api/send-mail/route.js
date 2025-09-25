@@ -42,7 +42,7 @@ export async function POST(req) {
           
           ${name ? `<p><strong>Name:</strong> ${name}</p>` : ""}
           ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-          ${whatsapp ? `<p><strong>WhatsApp:</strong> ${whatsapp}</p>` : ""}
+          ${whatsapp ? `<p><strong>Phone:</strong> ${whatsapp}</p>` : ""}
           ${mail ? `<p><strong>Email:</strong> ${mail}</p>` : ""}
           ${project ? `<p><strong>Project:</strong> ${project}</p>` : ""}
           ${service ? `<p><strong>Service:</strong> ${service}</p>` : ""}
@@ -69,8 +69,9 @@ export async function POST(req) {
     // ✅ Now send mail
     await transporter.sendMail({
       from: `"Website enquiry" <${process.env.EMAIL_USER}>`,
+      // to: ["webdesign.accolades@gmail.com"],
       to: ["sales@aurexbuilders.com"],
-      cc: ["webdesign.accolades@gmail.com"],
+      cc: ["leadsaccolades@gmail.com"],
       subject: `Aurex Builders landing page - ${
         name || "New Lead"
       } - ${new Date().toLocaleString()}`,

@@ -9,9 +9,9 @@ export const baseSchema = Yup.object().shape({
     .matches(/^[a-zA-Z ]+$/, "Name can only contain letters and spaces"),
 
   whatsapp: Yup.string()
-    .required("WhatsApp number is required")
+    .required("Phone number is required")
     .transform((value) => value.replace(/[\s-]/g, ""))
-    .matches(/^(\+?\d{1,3})?\d{10}$/, "Enter a valid WhatsApp number"),
+    .matches(/^(\+?\d{1,3})?\d{10}$/, "Enter a valid Phone number"),
 
   email: Yup.string()
     .required("Email is required")
@@ -23,9 +23,3 @@ export const baseSchema = Yup.object().shape({
     ),
 });
 
-// Project form schema extends base
-export const projectFormSchema = baseSchema.shape({
-  project: Yup.string()
-    .required("Please select a project")
-    .notOneOf([""], "Please select a project"),
-});

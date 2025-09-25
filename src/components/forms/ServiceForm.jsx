@@ -172,12 +172,12 @@ export default function ServiceForm({ onSuccess, service }) {
                 className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
                 htmlFor="whatsapp"
               >
-                WhatsApp No
+                Phone No
               </label>
               <input
                 type="text"
                 id="whatsapp"
-                placeholder="Enter WhatsApp Number"
+                placeholder="Enter Phone Number"
                 {...register("whatsapp")}
                 className={`w-full border rounded-lg px-3 py-2  font-[urbanist] ${errors.whatsapp ? "border-red-500" : "border-[#BABABA]"
                   }`}

@@ -154,12 +154,12 @@ export default function ContactForm({ onSuccess }) {
         {/* WhatsApp No */}
         <div>
           <label className="block mb-1 text-[11px] leading-[12px] font-normal font-[inter]">
-            WhatsApp No
+            Phone Number
           </label>
           <input
             type="text"
             {...register("whatsapp")}
-            placeholder="Enter WhatsApp Number"
+            placeholder="Enter Phone Number"
             className={`w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600 font-[urbanist] text-[15px] ${errors.whatsapp ? "border-red-500" : "border-[#BABABA]"
               }`}
           />
