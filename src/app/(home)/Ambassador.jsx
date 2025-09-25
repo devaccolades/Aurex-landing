@@ -197,7 +197,7 @@ const Ambassador = () => {
       <div className="hidden md:relative md:flex md:flex-col">
         <div className="absolute bottom-0 right-[45%] md:h-[700px] w-[380px] xl:h-[820px] xl:w-[436px] ambassadorHight  overflow-hidden">
           <Image
-            src={"/images/ambassador/bavana.svg"}
+            src={"/images/ambassador/bavanaCompressed.png"}
             height={500}
             width={500}
             alt="ambassador image"
