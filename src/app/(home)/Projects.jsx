@@ -120,7 +120,7 @@ export default function Projects() {
 
                 <div className="grid grid-cols-2 gap-4 text-sm mb-3">
                   <div>
-                    <p className="font-bold text-[14px] bg-[#EFEFEF] rounded-[8px] p-2">
+                    <p className="font-bold text-[14px] bg-[#EFEFEF] rounded-[8px] p-2 font-[urbanist] leading-[16px]">
                       {project.apartment_type}
                     </p>
                     <p className="mt-2 font-[urbanist] text-[12px]">
@@ -131,9 +131,9 @@ export default function Projects() {
                     </p>
                   </div>
                   <div>
-                    <p className="font-bold text-[14px] bg-[#EFEFEF] rounded-[8px] p-2">
+                    <p className="font-bold text-[14px] bg-[#EFEFEF] rounded-[8px] p-2 font-[urbanist] leading-[16px]">
                       Total Units:{" "}
-                      <span className="font-medium block">
+                      <span className="font-medium block font-[urbanist]">
                         {project.total_units}
                       </span>
                     </p>
