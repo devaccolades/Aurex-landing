@@ -148,7 +148,7 @@ const Ambassador = () => {
             />
             <div className="absolute top-0 right-0 h-[429px] w-[228px] overflow-hidden -mt-[5px]">
               <Image
-                src={"/images/ambassador/bavana.svg"}
+                src={"/images/ambassador/bavanaCompressed.png"}
                 height={500}
                 width={500}
                 alt="ambassador image"
