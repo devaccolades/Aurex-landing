@@ -31,7 +31,7 @@ export default function Footer() {
 
           {/* Address */}
           {/* Two column layout */}
-          <div className="flex justify-between items-start font-bold font-[urbanist] text-[14px] leading-[14px] lg:text-[16px] lg:leading-[16px]">
+          <div className="flex justify-between items-start font-bold gap-8 font-[urbanist] text-[14px] leading-[14px] lg:text-[16px] lg:leading-[16px]">
             {/* Left side - Address */}
             <div className=" whitespace-pre-line">
               {`AUREX BUILDERS PVT LTD.

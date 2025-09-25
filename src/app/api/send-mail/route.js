@@ -69,7 +69,8 @@ export async function POST(req) {
     // ✅ Now send mail
     await transporter.sendMail({
       from: `"Website enquiry" <${process.env.EMAIL_USER}>`,
-      to: ["webdesign.accolades@gmail.com"],
+      to: ["sales@aurexbuilders.com"],
+      cc: ["webdesign.accolades@gmail.com"],
       subject: `Aurex Builders landing page - ${
         name || "New Lead"
       } - ${new Date().toLocaleString()}`,
