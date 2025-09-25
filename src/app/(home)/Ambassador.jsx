@@ -192,7 +192,7 @@ const Ambassador = () => {
         </div>
       </div>
 
-      {/* md and above section  */}
+      {/* md and up  */}
 
       <div className="hidden md:relative md:flex md:flex-col">
         <div className="absolute bottom-0 right-[45%] md:h-[700px] w-[380px] xl:h-[820px] xl:w-[436px] ambassadorHight  overflow-hidden">
