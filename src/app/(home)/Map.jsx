@@ -6,7 +6,7 @@ import React from 'react'
 const Map = () => {
   return (
     <>
-   <div id='contact-us' className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
+   <div id='contact-us' className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh] ">
       {/* Left - Google Map */}
       <div className="w-full h-[400px] md:h-auto">
         <iframe
@@ -23,8 +23,6 @@ const Map = () => {
       {/* Right - Contact Form */}
       <div className="flex items-center justify-center bg-white">
         <ContactForm />
-        {/* <ProjectForm projectName="Aurex Cascade City" /> */}
-        {/* <ServiceForm service="Web Development" /> */}
       </div>
     </div>
 
