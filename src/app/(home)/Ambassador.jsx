@@ -74,7 +74,7 @@ const Ambassador = () => {
 
   return (
     <section
-      id="services"
+      id="about-us"
       className="h-auto "
       style={{ border: "0.5px solid rgba(168, 168, 168, 0.3)" }}
       ref={sectionRef}

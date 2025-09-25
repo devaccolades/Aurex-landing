@@ -105,6 +105,7 @@ export default function Services() {
   return (
     <>
       <section
+      id="services"
         ref={sectionRef}
         className="relative w-full py-16 text-white overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: "url('/images/services/Rectangle 474.svg')" }}
