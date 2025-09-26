@@ -14,12 +14,13 @@ export default function FloatingButtons() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleWhatsAppClick = () => {
     // Replace with your WhatsApp number
-    const phoneNumber = "+1234567890"; // Your number with country code
+    const phoneNumber = "+919846507474"; // Your number with country code
     const message = "Hi, I'm interested in your services!";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(url, "_blank");
   };
-
 
   return (
     <>
@@ -49,12 +50,10 @@ export default function FloatingButtons() {
           <button
             onClick={() => setIsModalOpen(true)}
             className="bg-[#C19A5D] hover:bg-amber-700 transform rotate-180   text-white px-4 py-2 rounded-tr-xl rounded-br-xl shadow-lg transition-all duration-300 hover:scale-105 group writing-vertical"
-            style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}
+            style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
           >
-            <span 
-            className="  text-[13px] md:text-[16px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold  tracking-wider">
+            <span className="  text-[13px] md:text-[16px] leading-[16px] md:leading-[20px] font-[urbanist] font-bold  tracking-wider">
               Enquire Now
-             
             </span>
             {/* Tooltip */}
             {/* <span className="absolute right-16 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -67,7 +66,5 @@ export default function FloatingButtons() {
         <ProjectForm onSuccess={() => setIsModalOpen(false)} />
       </Modal>
     </>
-
   );
 }
-
