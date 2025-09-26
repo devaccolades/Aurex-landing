@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { projectFormSchema } from "@/lib/validationSchemas";
+import { baseSchema } from "@/lib/validationSchemas";
 import { projectsData } from "@/data/cardData";
 import Swal from "sweetalert2";
 
@@ -16,7 +16,7 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
     formState: { errors, isSubmitting },
     reset,
   } = useForm({
-    resolver: yupResolver(projectFormSchema),
+    resolver: yupResolver(baseSchema),
     mode: "all", // can switch to onChange for live validation
     defaultValues: {
       name: "",
