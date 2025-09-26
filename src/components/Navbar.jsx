@@ -72,13 +72,13 @@ const Navbar = () => {
                 >
                   +91 98445 07474
                 </a>
-                <span>/</span>
+                {/* <span>/</span>
                 <a 
                   href="tel:+919846007474" 
                   className="hover:text-[#006A54] transition-colors duration-200 cursor-pointer"
                 >
                   98460 07474
-                </a>
+                </a> */}
               </div>
             </div>
             
