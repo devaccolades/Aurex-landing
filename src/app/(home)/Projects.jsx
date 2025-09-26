@@ -27,8 +27,11 @@ export default function Projects() {
               <Image
                 src={project.main_image}
                 alt="Project Building"
-                width={600}
-                height={100}
+                width={228}
+                height={444}
+                sizes="(max-width: 768px) 100vw, 228px"
+                quality={60}
+                priority
                 className="w-full h-full object-cover"
               />
 
@@ -97,8 +100,10 @@ export default function Projects() {
                 <Image
                   src={project.vector_image}
                   alt="Vector Background"
-                  width={500}
-                  height={100}
+                  width={300} // approximate rendered width
+                  height={60} // scaled proportionally
+                  sizes="(max-width: 768px) 100vw, 300px"
+                  quality={60}
                   className="w-full h-auto opacity-70"
                 />
               </div>
@@ -189,10 +194,7 @@ export default function Projects() {
       </Modal>
 
       {/* Enquiry Form Modal - Now using ProjectForm */}
-      <Modal
-        isOpen={isFormModalOpen}
-        onClose={() => setIsFormModalOpen(false)}
-      >
+      <Modal isOpen={isFormModalOpen} onClose={() => setIsFormModalOpen(false)}>
         {activeProject && (
           <ProjectForm
             projectName={activeProject.title}
