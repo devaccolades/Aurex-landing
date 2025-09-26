@@ -126,31 +126,32 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
   };
 
   return (
-    <div className="w-[98%] md:max-w-3xl mx-auto bg-white  rounded-2xl overflow-hidden">
+    <div className="w-[98%] md:max-w-3xl mx-auto bg-white  rounded-2xl overflow-hidden ">
       {/* Top image */}
-      <div className="relative w-full h-32 md:h-64">
+      <div className="relative w-full h-48 md:h-64">
         <iframe
           src={mapUrl}
-          width="600"
-          height="250"
+          className="w-full h-full"
           style={{ border: 0 }}
-          allowFullScreen=""
+          allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
-        <div className="absolute bottom-0 left-0 w-full md:h-[20%] bg-gradient-to-t from-white to-transparent" />
+
+        {/* Only overlay if you really want a gradient on top of map */}
+        <div className="absolute bottom-0 left-0 w-full h-16 md:h-20 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </div>
 
       {/* Content */}
       <div className="p-0 md:p-4">
-        <h2 className="text-center text-[20px] leading-[20px] font-semibold mb-6 font-[urbanist]">
+        <h2 className="text-center text-[16px] md:text-[20px] leading-[20px] font-semibold mb-1 md:mb-6 font-[urbanist]">
           WE ARE READY TO ANSWER <br className="hidden md:block" />
           ALL YOUR QUESTIONS
         </h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 md:space-y-4">
           {/* Name & WhatsApp */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
             <div>
               <label
                 className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
@@ -163,8 +164,9 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
                 id="name"
                 placeholder="Enter your name"
                 {...register("name")}
-                className={`w-full border rounded-lg px-3 py-2 focus:outline-none   font-[urbanist] ${errors.name ? "border-red-500" : "border-[#BABABA]"
-                  }`}
+                className={`w-full border rounded-lg px-3 py-1 md:py-2 focus:outline-none   font-[urbanist] ${
+                  errors.name ? "border-red-500" : "border-[#BABABA]"
+                }`}
               />
               {errors.name && (
                 <p className="text-red-500 text-xs mt-1">
@@ -185,8 +187,9 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
                 id="whatsapp"
                 placeholder="Enter Phone Number"
                 {...register("whatsapp")}
-                className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.whatsapp ? "border-red-500" : "border-[#BABABA]"
-                  }`}
+                className={`w-full border rounded-lg px-3 py-1 md:py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${
+                  errors.whatsapp ? "border-red-500" : "border-[#BABABA]"
+                }`}
               />
               {errors.whatsapp && (
                 <p className="text-red-500 text-xs mt-1">
@@ -209,8 +212,9 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
               id="email"
               placeholder="Enter Email address"
               {...register("email")}
-              className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${errors.email ? "border-red-500" : "border-[#BABABA]"
-                }`}
+              className={`w-full border rounded-lg px-3 py-1 md:py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] ${
+                errors.email ? "border-red-500" : "border-[#BABABA]"
+              }`}
             />
             {errors.email && (
               <p className="text-red-500 text-xs mt-1">
@@ -220,7 +224,7 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
           </div>
 
           {/* Project + Submit */}
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-2 md:gap-4 items-center">
             <div>
               <label
                 className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
@@ -236,7 +240,7 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
                   id="project"
                   value={projectName}
                   readOnly
-                  className="w-full border rounded-lg px-3 py-2 bg-gray-100 text-black font-[urbanist]"
+                  className="w-full border rounded-lg px-3 py-1 md:py-2 bg-gray-100 text-black font-[urbanist]"
                   {...register("project")}
                 />
               ) : (
@@ -244,10 +248,11 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
                 <select
                   id="project"
                   {...register("project")}
-                  className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] cursor-pointer ${errors.project
+                  className={`w-full border rounded-lg px-3 py-1 md:py-2 focus:outline-none focus:ring-2 focus:ring-green-600 font-[urbanist] cursor-pointer ${
+                    errors.project
                       ? "border-red-500 text-black"
                       : "border-[#BABABA] text-black"
-                    }`}
+                  }`}
                 >
                   <option value="" disabled hidden>
                     Select project
@@ -271,8 +276,9 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
               type="submit"
               disabled={isSubmitting}
               // className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] disabled:opacity-50 cursor-pointer"
-              className={`bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] disabled:opacity-50 cursor-pointer ${errors.project ? "mt-[-6px]" : "mt-[14px]"
-                }`}
+              className={`bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] disabled:opacity-50 cursor-pointer ${
+                errors.project ? "md:mt-[-6px]" : "md:mt-[14px]"
+              }`}
             >
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
