@@ -128,7 +128,7 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
   return (
     <div className="w-[98%] md:max-w-3xl mx-auto bg-white  rounded-2xl overflow-hidden">
       {/* Top image */}
-      <div className="relative w-full h-[150px] md:h-64">
+      <div className="relative w-full h-32 md:h-64">
         <iframe
           src={mapUrl}
           width="600"
@@ -138,7 +138,7 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
-        <div className="absolute bottom-0 left-0 w-full h-[20%] bg-gradient-to-t from-white to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full md:h-[20%] bg-gradient-to-t from-white to-transparent" />
       </div>
 
       {/* Content */}
