@@ -67,10 +67,10 @@ const Navbar = () => {
               />
               <div className="text-[14px] leading-[16px] font-bold flex items-center space-x-1">
                 <a 
-                  href="tel:+919844507474" 
+                  href="tel:+919846507474" 
                   className="hover:text-[#006A54] transition-colors duration-200 cursor-pointer"
                 >
-                  +91 98445 07474
+                  +91 9846507474
                 </a>
                 {/* <span>/</span>
                 <a 
@@ -105,17 +105,10 @@ const Navbar = () => {
               <Image src={Phone} alt='phone' className='w-[12px] h-[12px]' />
               <div className="text-[10px] font-bold leading-[16px] text-[#000000] flex items-center space-x-1">
                 <a 
-                  href="tel:+919844507474" 
+                  href="tel:+9198465 07474" 
                   className="hover:text-[#006A54] transition-colors duration-200 cursor-pointer active:scale-95"
                 >
-                  +91 98445 07474
-                </a>
-                <span>/</span>
-                <a 
-                  href="tel:+919846007474" 
-                  className="hover:text-[#006A54] transition-colors duration-200 cursor-pointer active:scale-95"
-                >
-                  98460 07474
+                  +91 98465 07474
                 </a>
               </div>
             </div>

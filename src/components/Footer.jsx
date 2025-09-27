@@ -57,7 +57,6 @@ export default function Footer() {
                 <Image src="/images/footer/phone.png" alt="Phone" width={18} height={18} />
                 <div className="flex flex-col">
                   <span className="mb-1">+91 98465 07474</span>
-                  <span>+91 98460 07474</span>
                 </div>
               </div>
 
