@@ -5,8 +5,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { baseSchema } from "@/lib/validationSchemas";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 export default function ServiceForm({ onSuccess, service }) {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -18,28 +20,29 @@ export default function ServiceForm({ onSuccess, service }) {
     defaultValues: {
       name: "",
       whatsapp: "",
-      email: "",
+      // email: "",
     },
   });
 
   const onSubmit = async (data) => {
+    setLoading(true);
   try {
     // 🎨 Show loading animation while submitting
-    Swal.fire({
-      title: "Sending enquiry...",
-      text: "Please wait while we process your enquiry",
-      icon: "info",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-      customClass: {
-        title: "font-[urbanist]",
-        htmlContainer: "font-[urbanist]",
-      },
-    });
+    // Swal.fire({
+    //   title: "Sending enquiry...",
+    //   text: "Please wait while we process your enquiry",
+    //   icon: "info",
+    //   allowOutsideClick: false,
+    //   allowEscapeKey: false,
+    //   showConfirmButton: false,
+    //   didOpen: () => {
+    //     Swal.showLoading();
+    //   },
+    //   customClass: {
+    //     title: "font-[urbanist]",
+    //     htmlContainer: "font-[urbanist]",
+    //   },
+    // });
 
     // API call
     const res = await fetch("/api/send-mail", {
@@ -50,76 +53,123 @@ export default function ServiceForm({ onSuccess, service }) {
       body: JSON.stringify({
         name: data.name,
         whatsapp: data.whatsapp,
-        mail: data.email,
+        // mail: data.email,
         service: data.service,
       }),
     });
 
-    if (!res.ok) {
-      const errorText = await res.text();
-      throw new Error(errorText || "Email sending failed");
-    }
+     const responseData = await res.json();
+      if (!res.ok || !responseData.success) {
+        throw new Error(responseData.error || "Enquiry sending failed");
+      }
 
-    const responseData = await res.json();
-    if (!responseData.success) {
-      throw new Error(responseData.error || "Email sending failed");
-    }
+    // if (!res.ok) {
+    //   const errorText = await res.text();
+    //   throw new Error(errorText || "Email sending failed");
+    // }
+
+    // const responseData = await res.json();
+    // if (!responseData.success) {
+    //   throw new Error(responseData.error || "Email sending failed");
+    // }
 
     // Reset form
     reset();
 
     // 🎉 Success modal
-    const result = await Swal.fire({
-      title: "📧 Thank you!",
-      text: "Your enquiry has been received successfully!",
-      icon: "success",
-      confirmButtonText: "Great!",
-      confirmButtonColor: "#10B981",
-      background: "#F9FAFB",
-      customClass: {
-        popup: "animate__animated animate__bounceIn font-[urbanist]",
-        title: "font-[urbanist]",
-        htmlContainer: "font-[urbanist]",
-        confirmButton: "px-6 py-2 rounded-lg font-medium font-[urbanist]",
-      },
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp",
-      },
-    });
+    // const result = await Swal.fire({
+    //   title: "📧 Thank you!",
+    //   text: "Your enquiry has been received successfully!",
+    //   icon: "success",
+    //   confirmButtonText: "Great!",
+    //   confirmButtonColor: "#10B981",
+    //   background: "#F9FAFB",
+    //   customClass: {
+    //     popup: "animate__animated animate__bounceIn font-[urbanist]",
+    //     title: "font-[urbanist]",
+    //     htmlContainer: "font-[urbanist]",
+    //     confirmButton: "px-6 py-2 rounded-lg font-medium font-[urbanist]",
+    //   },
+    //   showClass: {
+    //     popup: "animate__animated animate__fadeInDown",
+    //   },
+    //   hideClass: {
+    //     popup: "animate__animated animate__fadeOutUp",
+    //   },
+    // });
 
-    if (result.isConfirmed && onSuccess) {
-      onSuccess();
-    }
+    // if (result.isConfirmed && onSuccess) {
+    //   onSuccess();
+    // }
+    Swal.fire({
+        title: "📧 Thank you!",
+        text: "Your enquiry has been received successfully!",
+        icon: "success",
+        timer: 2200,
+        showConfirmButton: false,
+        background: "#F9FAFB",
+        customClass: {
+          popup: "animate__animated animate__fadeInDown font-[urbanist]",
+          title: "font-[urbanist] text-green-600 text-lg",
+          htmlContainer: "font-[urbanist] text-gray-700",
+          confirmButton:
+            "px-6 py-2 rounded-lg font-medium font-[urbanist] bg-green-500 text-white hover:bg-green-600",
+        },
+        showClass: { popup: "animate__animated animate__fadeInDown" },
+        hideClass: { popup: "animate__animated animate__fadeOutUp" },
+      });
+
+      if (onSuccess) onSuccess();
   } catch (error) {
     console.error(error);
 
     // 🚨 Error modal (only retry button)
-    const errorResult = await Swal.fire({
-      title: "Oops! Something went wrong",
-      text: "We couldn't send your enquiry right now.",
-      icon: "error",
-      confirmButtonText: "Try Again",
-      confirmButtonColor: "#EF4444",
-      footer:
-        '<small class="text-gray-500 font-[urbanist]">Error occurred at: ' +
-        new Date().toLocaleTimeString() +
-        "</small>",
-      customClass: {
-        popup: "animate__animated animate__shakeX font-[urbanist]",
-        title: "font-[urbanist]",
-        htmlContainer: "font-[urbanist]",
-        confirmButton: "font-[urbanist]",
-      },
-    });
-
-    if (errorResult.isConfirmed) {
-      await onSubmit(data); // retry
+    Swal.fire({
+        title: "❌ Oops! Something went wrong",
+        text: "We couldn't send your enquiry right now.",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#EF4444",
+        background: "#FEF2F2",
+        footer:
+          '<small class="text-gray-500 font-[urbanist]">Error at: ' +
+          new Date().toLocaleTimeString() +
+          "</small>",
+        customClass: {
+          popup: "animate__animated animate__shakeX font-[urbanist]",
+          title: "font-[urbanist] text-red-600",
+          htmlContainer: "font-[urbanist] text-gray-700",
+          confirmButton:
+            "px-6 py-2 rounded-lg font-[urbanist] bg-red-500 text-white hover:bg-red-600",
+        },
+      });
+    } finally {
+      setLoading(false);
     }
-  }
-};
+  };
+//     const errorResult = await Swal.fire({
+//       title: "Oops! Something went wrong",
+//       text: "We couldn't send your enquiry right now.",
+//       icon: "error",
+//       confirmButtonText: "Try Again",
+//       confirmButtonColor: "#EF4444",
+//       footer:
+//         '<small class="text-gray-500 font-[urbanist]">Error occurred at: ' +
+//         new Date().toLocaleTimeString() +
+//         "</small>",
+//       customClass: {
+//         popup: "animate__animated animate__shakeX font-[urbanist]",
+//         title: "font-[urbanist]",
+//         htmlContainer: "font-[urbanist]",
+//         confirmButton: "font-[urbanist]",
+//       },
+//     });
+
+//     if (errorResult.isConfirmed) {
+//       await onSubmit(data); // retry
+//     }
+  // }
+// };
 
   return (
     <div className="w-[98%] md:max-w-3xl mx-auto bg-white  rounded-2xl overflow-hidden">
@@ -190,8 +240,10 @@ export default function ServiceForm({ onSuccess, service }) {
             </div>
           </div>
 
+        
+
           {/* Email */}
-          <div>
+          {/* <div>
             <label
               className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
               htmlFor="email"
@@ -211,7 +263,7 @@ export default function ServiceForm({ onSuccess, service }) {
                 {errors.email.message}
               </p>
             )}
-          </div>
+          </div> */}
 
           {/* Service (readonly, hidden input for submission) */}
           <input type="hidden" value={service} {...register("service")} />
@@ -223,10 +275,11 @@ export default function ServiceForm({ onSuccess, service }) {
           {/* Submit */}
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={loading || isSubmitting}
             className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] md:mt-5 disabled:opacity-50"
           >
-            {isSubmitting ? "Submitting..." : "Submit"}
+            {/* {isSubmitting ? "Submitting..." : "Submit"} */}
+            {loading ? "Sending..." : "Send Enquiry"}
           </button>
         </form>
       </div>

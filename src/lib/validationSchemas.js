@@ -13,13 +13,13 @@ export const baseSchema = Yup.object().shape({
     .transform((value) => value.replace(/[\s-]/g, ""))
     .matches(/^(\+?\d{1,3})?\d{10}$/, "Enter a valid Phone number"),
 
-  email: Yup.string()
-    .required("Email is required")
-    .email("Enter a valid email address")
-    .max(254, "Email is too long")
-    .matches(
-      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-      "Enter a valid email with proper domain"
-    ),
+  // email: Yup.string()
+  //   .required("Email is required")
+  //   .email("Enter a valid email address")
+  //   .max(254, "Email is too long")
+  //   .matches(
+  //     /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+  //     "Enter a valid email with proper domain"
+  //   ),
 });
 
