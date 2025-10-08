@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,6 +9,7 @@ import { projectsData } from "@/data/cardData";
 import Swal from "sweetalert2";
 
 export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -21,29 +22,30 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
     defaultValues: {
       name: "",
       whatsapp: "",
-      email: "",
+      // email: "",
       project: projectName || "",
     },
   });
 
   const onSubmit = async (data) => {
+     setLoading(true);
     try {
       // 🎨 Show loading animation while submitting
-      Swal.fire({
-        title: "Sending enquiry...",
-        text: "Please wait while we process your enquiry",
-        icon: "info",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showConfirmButton: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-        customClass: {
-          title: "font-[urbanist]",
-          htmlContainer: "font-[urbanist]",
-        },
-      });
+      // Swal.fire({
+      //   title: "Sending enquiry...",
+      //   text: "Please wait while we process your enquiry",
+      //   icon: "info",
+      //   allowOutsideClick: false,
+      //   allowEscapeKey: false,
+      //   showConfirmButton: false,
+      //   didOpen: () => {
+      //     Swal.showLoading();
+      //   },
+      //   customClass: {
+      //     title: "font-[urbanist]",
+      //     htmlContainer: "font-[urbanist]",
+      //   },
+      // });
 
       // API call
       const res = await fetch("/api/send-mail", {
@@ -54,74 +56,74 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
         body: JSON.stringify({
           name: data.name,
           whatsapp: data.whatsapp,
-          mail: data.email,
+          // mail: data.email,
           project: data.project,
         }),
       });
 
-      if (!res.ok) {
-        const errorText = await res.text();
-        throw new Error(errorText || "Email sending failed");
+      // if (!res.ok) {
+      //   const errorText = await res.text();
+      //   throw new Error(errorText || "Email sending failed");
+      // }
+
+      // const responseData = await res.json();
+      // if (!responseData.success) {
+      //   throw new Error(responseData.error || "Email sending failed");
+      // }
+      const responseData = await res.json();
+      if (!res.ok || !responseData.success) {
+        throw new Error(responseData.error || "Enquiry sending failed");
       }
 
-      const responseData = await res.json();
-      if (!responseData.success) {
-        throw new Error(responseData.error || "Email sending failed");
-      }
 
       // Reset form
       reset();
 
       // 🎉 Success modal
-      const result = await Swal.fire({
+      Swal.fire({
         title: "📧 Thank you!",
         text: "Your enquiry has been received successfully!",
         icon: "success",
-        confirmButtonText: "Great!",
-        confirmButtonColor: "#10B981",
+        timer: 2200,
+        showConfirmButton: false,
         background: "#F9FAFB",
         customClass: {
-          popup: "animate__animated animate__bounceIn font-[urbanist]",
-          title: "font-[urbanist]",
-          htmlContainer: "font-[urbanist]",
-          confirmButton: "px-6 py-2 rounded-lg font-medium font-[urbanist]",
+          popup: "animate__animated animate__fadeInDown font-[urbanist]",
+          title: "font-[urbanist] text-green-600 text-lg",
+          htmlContainer: "font-[urbanist] text-gray-700",
+          confirmButton:
+            "px-6 py-2 rounded-lg font-medium font-[urbanist] bg-green-500 text-white hover:bg-green-600",
         },
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
+        showClass: { popup: "animate__animated animate__fadeInDown" },
+        hideClass: { popup: "animate__animated animate__fadeOutUp" },
       });
 
-      if (result.isConfirmed && onSuccess) {
-        onSuccess();
-      }
+      if (onSuccess) onSuccess();
     } catch (error) {
       console.error(error);
 
       // 🚨 Error modal (only retry button)
-      const errorResult = await Swal.fire({
-        title: "Oops! Something went wrong",
+      Swal.fire({
+        title: "❌ Oops! Something went wrong",
         text: "We couldn't send your enquiry right now.",
         icon: "error",
         confirmButtonText: "Try Again",
         confirmButtonColor: "#EF4444",
+        background: "#FEF2F2",
         footer:
-          '<small class="text-gray-500 font-[urbanist]">Error occurred at: ' +
+          '<small class="text-gray-500 font-[urbanist]">Error at: ' +
           new Date().toLocaleTimeString() +
           "</small>",
         customClass: {
           popup: "animate__animated animate__shakeX font-[urbanist]",
-          title: "font-[urbanist]",
-          htmlContainer: "font-[urbanist]",
-          confirmButton: "font-[urbanist]",
+          title: "font-[urbanist] text-red-600",
+          htmlContainer: "font-[urbanist] text-gray-700",
+          confirmButton:
+            "px-6 py-2 rounded-lg font-[urbanist] bg-red-500 text-white hover:bg-red-600",
         },
       });
-
-      if (errorResult.isConfirmed) {
-        await onSubmit(data); // retry
-      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -200,7 +202,7 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
           </div>
 
           {/* Email */}
-          <div>
+          {/* <div>
             <label
               className="block font-[inter] text-[11px] leading-[12px] font-medium mb-1"
               htmlFor="email"
@@ -221,7 +223,7 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
                 {errors.email.message}
               </p>
             )}
-          </div>
+          </div> */}
 
           {/* Project + Submit */}
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-2 md:gap-4 items-center">
@@ -274,13 +276,13 @@ export default function MapForm({ onSuccess, projectName = "", mapUrl }) {
 
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={loading || isSubmitting}
               // className="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] disabled:opacity-50 cursor-pointer"
               className={`bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors w-full font-[inter] text-[15px] disabled:opacity-50 cursor-pointer ${
                 errors.project ? "md:mt-[-6px]" : "md:mt-[14px]"
               }`}
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {loading ? "Sending..." : "Send Enquiry"}
             </button>
           </div>
         </form>
