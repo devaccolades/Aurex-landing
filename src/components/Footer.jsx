@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-[#f6f2ec] text-gray-800">
       <div className="containers mx-auto py-10 grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -69,7 +70,7 @@ export default function Footer() {
       {/* Bottom copyright line */}
       <div >
         <div className="containers mx-auto py-4 font-normal font-[inter] text-[12px] leading-[12px] text-[#000000]">
-          Copyright © 2025 <span className="font-semibold text-[#A8731C]">AUREX Builders</span> All Rights Reserved
+          Copyright © {currentYear} <span className="font-semibold text-[#A8731C]">AUREX Builders</span> All Rights Reserved
         </div>
       </div>
     </footer>
