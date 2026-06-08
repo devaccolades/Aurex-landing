@@ -109,7 +109,7 @@ export default function Projects() {
               </div>
 
               {/* Details */}
-              <div className="-mt-10 px-3 uppercase">
+              <div className="-mt-1 xl:-mt-6 px-3 uppercase">
                 <div className="flex gap-1 mb-3 capitalize">
                   <span
                     className={`bg-[#006A54] font-[urbanist] text-white text-[14px] leading-[100%] font-semibold ${
@@ -130,7 +130,7 @@ export default function Projects() {
                     </p>
                     <p className="mt-2 font-[urbanist] text-[12px]">
                       Location:
-                      <span className="font-bold block text-[14px] mt-2">
+                      <span className="font-bold block text-[14px] leading-[16px] mt-2">
                         {project.location}
                       </span>
                     </p>
