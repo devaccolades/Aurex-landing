@@ -31,7 +31,7 @@ export const servicesData = [
 export const projectsData = [
   {
     title: "Aurex Brookside",
-    status: "Upcoming",
+    status: "New Launch",
     status_bg: "#006A54",
     project_logo: "/images/herosection/brookside-logo.webp",
     qr_code: "/images/herosection/brookside-qr.png",
