@@ -77,7 +77,7 @@ export default function Projects() {
                   alt="Project Logo"
                   width={100}
                   height={40}
-                  className="object-contain z-40 xl:w-[100px] lg:h-[40px] lg:w-[80px] h-[35px] w-[80px] "
+                  className="object-contain z-50 xl:w-[100px] lg:h-[40px] lg:w-[80px] h-[45px] w-[100px] "
                 />
                 <div className="text-right flex gap-1">
                   <Image

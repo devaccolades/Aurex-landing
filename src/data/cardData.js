@@ -33,7 +33,7 @@ export const projectsData = [
     title: "Aurex Brookside",
     status: "New Launch",
     status_bg: "#006A54",
-    project_logo: "/images/herosection/brookside-logo.webp",
+    project_logo: "/images/herosection/g10.svg",
     qr_code: "/images/herosection/brookside-qr.png",
     rera_no: "K‐RERA/PRJ/TSR/078/2026",
     vector_image: "/images/herosection/brookside-line.webp",
