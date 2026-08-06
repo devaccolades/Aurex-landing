@@ -71,7 +71,7 @@ export async function POST(req) {
       from: `"Website enquiry" <${process.env.EMAIL_USER}>`,
       // to: ["webdesign.accolades@gmail.com"],
       to: ["sales@aurexbuilders.com"],
-      cc: ["leadsaccolades@gmail.com"],
+      // cc: ["leadsaccolades@gmail.com"],
       subject: `Aurex Builders landing page - ${
         name || "New Lead"
       } - ${new Date().toLocaleString()}`,
